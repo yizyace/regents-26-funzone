@@ -72,8 +72,16 @@ scripts/scaffold_app.py --config subject.json --templates templates --out .
 ```
 Fill `subject.json` from `templates/subject.us-history.json` (every `{{TOKEN}}` must be
 set — a missing one fails the run rather than leaking "U.S. History"). Theme the
-money-ladder `qs_prizes` to the subject. For an existing repo, just drop in the new
-`cards.js` + `img/`.
+money-ladder `qs_prizes` to the subject.
+
+**Adding a session to an existing repo:** make the session a self-contained
+subdirectory (`<mon><yr>/`, e.g. `aug2025/`) so older sessions stay playable at their
+original URLs — never overwrite the root deck. Scaffold the three apps into it
+(`--out aug2025`), drop that session's `cards.js` + `img/` beside them, and turn the
+root `index.html` into a hub linking each session's quiz show + flashcards. The session
+config is identical to the reference except `eyebrow`, the titles, and the flash-card
+counts; the generated `quizshow.html`/`flashcards.html` reference `cards.js` and `img/`
+by relative path, so the subdirectory just works.
 
 **6. Verify in a browser — do not skip.** Serve the dir (`python3 -m http.server`) and
 open the quiz. Confirm a media question actually renders its image (check an `<img>` has

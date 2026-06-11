@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{{QS_TITLE}}</title>
+<title>⭐ REGENTS RUSH! — The U.S. History Quiz Show</title>
 <style>
 :root{
   --bg1:#0a0420; --bg2:#1a0b3d; --panel:rgba(20,10,50,.88); --border:#4a2d8f;
@@ -211,8 +211,8 @@ h1{
 
 <div class="wrap">
   <div class="marquee"><div class="bulbs"></div>
-    <h1>{{QS_H1}}</h1>
-    <div class="tagline">{{QS_TAGLINE}}</div>
+    <h1>⭐ Regents Rush! ⭐</h1>
+    <div class="tagline">The U.S. History &amp; Government Quiz Spectacular</div>
   </div>
 
   <div class="hud">
@@ -233,7 +233,9 @@ h1{
   <div class="panel">
     <span class="prize-emoji">🎰</span>
     <h2>Regents Rush!</h2>
-    <p>{{QS_INTRO}}</p>
+    <p>28 multiple-choice questions straight from the August 2025 U.S. History Regents.<br>
+    Climb the money ladder to <b style="color:var(--gold)">$1,000,000</b> · build 🔥 streaks for <b style="color:var(--gold)">2× and 3× multipliers</b> · win trophies at 7, 14, 21 and 28 correct.<br>
+    Real exam documents, photos &amp; cartoons on screen — click any image to zoom. Two 50:50s and one Skip. 30–50 seconds a question. Keys 1–4 work.</p>
     <div class="btnrow"><button class="bigbtn" id="startBtn">▶ Start the Show!</button></div>
   </div>
 </div>
@@ -331,7 +333,12 @@ const conf=(function(){
 })();
 
 /* ---------- game state ---------- */
-const PRIZES=[{{QS_PRIZES}}];
+const PRIZES=[
+  {at:7,  emoji:'🥉', name:'THE BRONZE GAVEL', desc:'7 correct! The Founding Fathers nod approvingly. The Bronze Gavel of Justice is YOURS!'},
+  {at:14, emoji:'🔔', name:'THE SILVER LIBERTY BELL', desc:'14 correct! Ring it loud — the Silver Liberty Bell joins your trophy case!'},
+  {at:21, emoji:'🦅', name:'THE GOLDEN EAGLE', desc:'21 correct! Soaring like Manifest Destiny itself — the Golden Eagle is YOURS!'},
+  {at:28, emoji:'🏆', name:'THE PLATINUM CONSTITUTION', desc:'A PERFECT 28/28! WE THE PEOPLE crown you champion — the Platinum Constitution trophy!'}
+];
 let order=[], qi=0, bank=0, streak=0, best=0, correctCount=0, missed=[], wonPrizes=[], lives={fifty:2,skip:1};
 let phase='idle', timer=null, timeLeft=30, curTot=30;
 

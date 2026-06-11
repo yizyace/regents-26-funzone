@@ -30,9 +30,10 @@ one Regents. Naming convention:
 U.S. History home and the canonical template source. New subjects get a fresh repo.
 
 **Routing decision:**
-- Repo for this subject **exists** → add the exam to it. Namespace the new session's
-  assets (`img/jan2026/…`) and either extend `ALL_CARDS` or ship a session-scoped deck;
-  keep older sessions playable.
+- Repo for this subject **exists** → add the exam as a session subdirectory
+  (`<mon><yr>/`, e.g. `aug2025/`) holding its own scaffolded apps, `cards.js`, and
+  `img/`, and link it from a root `index.html` hub. Keeps every earlier session playable
+  at its original URL; never overwrite the root deck. See SKILL.md step 5.
 - Repo **does not exist** → create `regents-<slug>-funzone` and scaffold from the
   templates.
 
