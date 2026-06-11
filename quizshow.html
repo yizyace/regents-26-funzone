@@ -367,7 +367,11 @@ function updateHud(){
 }
 function popBank(){ const b=$('bankVal'); b.classList.remove('bank-pop'); void b.offsetWidth; b.classList.add('bank-pop'); }
 function floatCash(txt,x,y){ const d=document.createElement('div'); d.className='float-cash'; d.textContent=txt; d.style.left=x+'px'; d.style.top=y+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),1500); }
-function snapToTop(){ requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'auto'})); }
+function snapToTop(){
+  const reset=()=>{ document.documentElement.scrollTop=0; document.body.scrollTop=0; window.scrollTo(0,0); };
+  reset(); requestAnimationFrame(reset);
+}
+function focusWithoutScroll(el){ if(!el) return; try{ el.focus({preventScroll:true}); } catch { el.focus(); snapToTop(); } }
 
 /* ---------- rounds ---------- */
 function startGame(custom){
@@ -375,6 +379,7 @@ function startGame(custom){
   qi=0; bank=0; streak=0; best=0; correctCount=0; missed=[]; wonPrizes=[]; lives={fifty:2,skip:1};
   buildLadder();
   $('startOverlay').classList.add('hidden'); $('endOverlay').classList.add('hidden');
+  snapToTop();
   sWoosh(); renderQ();
 }
 
@@ -475,7 +480,8 @@ function showPost(prefix,c){
   $('post').innerHTML='<div class="explain"><b>'+prefix+'</b>'+esc(c.back)+'</div>'
     +'<div class="nextrow"><button class="bigbtn" id="nextBtn">'+(qi+1>=order.length?'🏁 Final Results':'Next Question →')+'</button></div>';
   $('nextBtn').addEventListener('click',next);
-  $('nextBtn').focus();
+  focusWithoutScroll($('nextBtn'));
+  snapToTop();
 }
 
 function checkPrize(){

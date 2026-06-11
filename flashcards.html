@@ -139,7 +139,11 @@ function updateChrome(){
 
 function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 
-function snapToTop(){ requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'auto'})); }
+function snapToTop(){
+  const reset=()=>{ document.documentElement.scrollTop=0; document.body.scrollTop=0; window.scrollTo(0,0); };
+  reset(); requestAnimationFrame(reset);
+}
+function focusWithoutScroll(el){ if(!el) return; try{ el.focus({preventScroll:true}); } catch { el.focus(); snapToTop(); } }
 
 function renderStimulus(c){
   let html = '';
@@ -191,7 +195,8 @@ function choose(i){
   if(i===c.answer){ right++; } else { wrong++; btns[i].classList.add('wrong'); missed.push(deck[pos]); }
   $('explain').classList.remove('hidden');
   $('nextBtn').classList.remove('hidden');
-  $('nextBtn').focus();
+  focusWithoutScroll($('nextBtn'));
+  snapToTop();
   updateChrome();
 }
 
@@ -202,6 +207,7 @@ function reveal(){
   $('selfActions').innerHTML = '<div class="selfgrade actions"><button class="btn got" id="gotBtn">✓ I got it (G)</button><button class="btn missed" id="missBtn">✗ I missed it (M)</button></div>';
   $('gotBtn').addEventListener('click', ()=>selfGrade(true));
   $('missBtn').addEventListener('click', ()=>selfGrade(false));
+  snapToTop();
 }
 
 function selfGrade(ok){
