@@ -123,21 +123,22 @@
     <h1>Regents Funzone</h1>
     <p>Pick an exam, climb the money ladder in the quiz show, then drill the full deck with flashcards. Real exam documents — maps, posters, cartoons, and charts — are built into every question.</p>
 
-    <section class="session">
-      <h2>January 2026 <span class="tag">28 MC · 37 cards</span></h2>
-      <div class="actions">
-        <a class="primary" href="quizshow.html">Quiz Show</a>
-        <a href="flashcards.html">Flashcards</a>
-      </div>
-    </section>
-
-    <section class="session">
-      <h2>August 2025 <span class="tag">28 MC · 37 cards</span></h2>
-      <div class="actions">
-        <a class="primary" href="aug2025/quizshow.html">Quiz Show</a>
-        <a href="aug2025/flashcards.html">Flashcards</a>
-      </div>
-    </section>
+    <div id="sessions"></div>
   </main>
+  <script>
+    // Each Regents administration is one entry. dir "" = the root deck; subdir sessions prefix their folder.
+    const SESSIONS = [
+      { dir: "",         title: "January 2026", tag: "28 MC · 37 cards" },
+      { dir: "aug2025/", title: "August 2025",  tag: "28 MC · 37 cards" },
+    ];
+    document.getElementById("sessions").innerHTML = SESSIONS.map(s => `
+    <section class="session">
+      <h2>${s.title} <span class="tag">${s.tag}</span></h2>
+      <div class="actions">
+        <a class="primary" href="${s.dir}quizshow.html">Quiz Show</a>
+        <a href="${s.dir}flashcards.html">Flashcards</a>
+      </div>
+    </section>`).join("");
+  </script>
 </body>
 </html>
