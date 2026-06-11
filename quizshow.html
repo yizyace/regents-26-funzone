@@ -367,6 +367,7 @@ function updateHud(){
 }
 function popBank(){ const b=$('bankVal'); b.classList.remove('bank-pop'); void b.offsetWidth; b.classList.add('bank-pop'); }
 function floatCash(txt,x,y){ const d=document.createElement('div'); d.className='float-cash'; d.textContent=txt; d.style.left=x+'px'; d.style.top=y+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),1500); }
+function snapToTop(){ requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'auto'})); }
 
 /* ---------- rounds ---------- */
 function startGame(custom){
@@ -397,6 +398,7 @@ function renderQ(){
   $('lifeFifty').addEventListener('click',useFifty);
   $('lifeSkip').addEventListener('click',useSkip);
   updateHud(); startTimer();
+  snapToTop();
 }
 
 function startTimer(){
@@ -495,7 +497,7 @@ $('prizeContinue').addEventListener('click',()=>{ sClick(); $('prizeOverlay').cl
 
 function next(){
   sClick(); qi++;
-  if(qi>=order.length) endGame(); else renderQ();
+  if(qi>=order.length){ endGame(); snapToTop(); } else renderQ();
 }
 
 /* ---------- end ---------- */
