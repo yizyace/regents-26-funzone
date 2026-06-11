@@ -94,17 +94,50 @@
   a.primary{
     background:linear-gradient(180deg,var(--gold),var(--orange));
   }
+  .session{
+    position:relative;
+    z-index:1;
+    margin-top:26px;
+    padding-top:22px;
+    border-top:2px dashed rgba(24,15,8,.18);
+  }
+  .session h2{
+    margin:0 0 14px;
+    font-size:clamp(22px,3.4vw,30px);
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .session h2 .tag{
+    font:700 12px/1 system-ui,sans-serif;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--blue);
+  }
 </style>
 </head>
 <body>
   <main>
-    <div class="eyebrow">January 2026 U.S. History Regents</div>
+    <div class="eyebrow">U.S. History &amp; Government Regents</div>
     <h1>Regents Funzone</h1>
-    <p>Practice with the quiz show, then drill the full deck with flashcards. Source excerpts, maps, posters, and cartoons from the exam are included.</p>
-    <div class="actions">
-      <a class="primary" href="quizshow.html">Start Quiz Show</a>
-      <a href="flashcards.html">Open Flashcards</a>
-    </div>
+    <p>Pick an exam, climb the money ladder in the quiz show, then drill the full deck with flashcards. Real exam documents — maps, posters, cartoons, and charts — are built into every question.</p>
+
+    <section class="session">
+      <h2>January 2026 <span class="tag">28 MC · 37 cards</span></h2>
+      <div class="actions">
+        <a class="primary" href="quizshow.html">Quiz Show</a>
+        <a href="flashcards.html">Flashcards</a>
+      </div>
+    </section>
+
+    <section class="session">
+      <h2>August 2025 <span class="tag">28 MC · 37 cards</span></h2>
+      <div class="actions">
+        <a class="primary" href="aug2025/quizshow.html">Quiz Show</a>
+        <a href="aug2025/flashcards.html">Flashcards</a>
+      </div>
+    </section>
   </main>
 </body>
 </html>
