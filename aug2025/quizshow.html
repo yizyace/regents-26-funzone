@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>⭐ REGENTS RUSH! — The U.S. History Quiz Show</title>
+<style>
+:root{
+  --bg1:#0a0420; --bg2:#1a0b3d; --panel:rgba(20,10,50,.88); --border:#4a2d8f;
+  --gold:#ffd34d; --gold2:#ffaa00; --text:#f5f1ff; --muted:#b3a6d9;
+  --green:#2eea8b; --red:#ff4d6a; --blue:#4dc3ff; --purple:#a974ff;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{
+  font-family:'Avenir Next','Trebuchet MS',-apple-system,'Segoe UI',sans-serif;
+  color:var(--text); overflow-x:hidden;
+  background:radial-gradient(1200px 800px at 50% -10%, #2d1566 0%, var(--bg2) 45%, var(--bg1) 100%);
+  min-height:100vh;
+}
+/* sweeping spotlights */
+body::before{
+  content:''; position:fixed; inset:-50%; pointer-events:none; z-index:0;
+  background:
+    conic-gradient(from 0deg at 30% 0%, transparent 0deg, rgba(169,116,255,.08) 8deg, transparent 16deg),
+    conic-gradient(from 180deg at 70% 0%, transparent 0deg, rgba(77,195,255,.08) 8deg, transparent 16deg);
+  animation:sweep 9s ease-in-out infinite alternate;
+}
+@keyframes sweep{from{transform:rotate(-14deg);}to{transform:rotate(14deg);}}
+#stars{position:fixed;inset:0;pointer-events:none;z-index:0;}
+#confettiCanvas{position:fixed;inset:0;pointer-events:none;z-index:50;}
+.wrap{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:14px;}
+
+/* marquee title */
+.marquee{
+  text-align:center; padding:16px 22px 12px; margin:6px auto 14px; max-width:760px;
+  border:4px solid var(--gold); border-radius:22px; position:relative;
+  background:linear-gradient(180deg, rgba(255,211,77,.12), rgba(255,170,0,.04));
+  box-shadow:0 0 32px rgba(255,211,77,.25), inset 0 0 24px rgba(255,211,77,.08);
+}
+.bulbs{position:absolute; inset:-9px; border-radius:26px; pointer-events:none;
+  background:
+    radial-gradient(circle 5px at 0 0, var(--gold) 99%, transparent) 0 0/42px 9px repeat-x,
+    radial-gradient(circle 5px at 0 0, var(--gold) 99%, transparent) 0 100%/42px 9px repeat-x,
+    radial-gradient(circle 5px at 0 0, var(--gold) 99%, transparent) 0 0/9px 42px repeat-y,
+    radial-gradient(circle 5px at 0 0, var(--gold) 99%, transparent) 100% 0/9px 42px repeat-y;
+  animation:blink .8s steps(2) infinite;
+}
+@keyframes blink{50%{opacity:.25;}}
+h1{
+  font-size:clamp(26px,5vw,46px); font-weight:900; letter-spacing:.04em;
+  background:linear-gradient(90deg,var(--gold),#fff6d8,var(--gold2),var(--gold));
+  background-size:300% 100%; -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:shimmer 3s linear infinite; text-transform:uppercase;
+}
+@keyframes shimmer{to{background-position:300% 0;}}
+.tagline{color:var(--muted);font-size:13px;letter-spacing:.25em;text-transform:uppercase;margin-top:4px;}
+
+/* HUD */
+.hud{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:14px;}
+.hudbox{
+  background:var(--panel); border:2px solid var(--border); border-radius:14px;
+  padding:8px 18px; text-align:center; min-width:120px; box-shadow:0 4px 18px rgba(0,0,0,.4);
+}
+.hudbox .lab{font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase;}
+.hudbox .val{font-size:22px;font-weight:900;}
+#bankVal{color:var(--gold); text-shadow:0 0 14px rgba(255,211,77,.6);}
+#streakVal{color:#ff9d4d;}
+#qVal{color:var(--blue);}
+#prizeShelfMini{font-size:22px;letter-spacing:4px;min-height:28px;}
+.bank-pop{animation:bankpop .5s ease;}
+@keyframes bankpop{30%{transform:scale(1.35);}100%{transform:scale(1);}}
+
+/* layout */
+.game{display:grid;grid-template-columns:1fr 210px;gap:14px;align-items:start;}
+@media(max-width:840px){.game{grid-template-columns:1fr;}.ladder{display:none;}}
+
+/* stage */
+.stage{
+  background:var(--panel); border:2px solid var(--border); border-radius:20px;
+  padding:22px; box-shadow:0 8px 40px rgba(0,0,0,.5); position:relative; overflow:hidden;
+}
+.stage.shake{animation:shake .45s;}
+@keyframes shake{10%,90%{transform:translateX(-2px);}20%,80%{transform:translateX(4px);}30%,50%,70%{transform:translateX(-7px);}40%,60%{transform:translateX(7px);}}
+.qmeta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+.forline{color:var(--gold);font-weight:800;font-size:14px;}
+.timerwrap{height:10px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-bottom:16px;}
+#timerFill{height:100%;width:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:99px;transition:width 1s linear, background .3s;}
+#timerFill.danger{background:linear-gradient(90deg,var(--red),#ff8a4d);}
+.qtext{font-size:clamp(15px,2.2vw,19px);line-height:1.6;margin-bottom:18px;animation:slideIn .45s ease both;}
+@keyframes slideIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+.choices{display:grid;gap:11px;}
+@media(min-width:700px){.choices{grid-template-columns:1fr 1fr;}}
+.choice{
+  position:relative; text-align:left; font:inherit; color:var(--text);
+  background:linear-gradient(180deg,#241252,#190b3c); border:2px solid var(--border);
+  border-radius:14px; padding:13px 15px 13px 50px; font-size:14.5px; line-height:1.45; cursor:pointer;
+  transition:transform .12s, border-color .12s, box-shadow .12s; animation:slideIn .4s ease both;
+}
+.choice:nth-child(1){animation-delay:.05s;}.choice:nth-child(2){animation-delay:.13s;}
+.choice:nth-child(3){animation-delay:.21s;}.choice:nth-child(4){animation-delay:.29s;}
+.choice:hover:not(:disabled){transform:translateY(-2px) scale(1.01);border-color:var(--gold);box-shadow:0 0 18px rgba(255,211,77,.35);}
+.choice:disabled{cursor:default;}
+.choice .letter{
+  position:absolute;left:12px;top:50%;transform:translateY(-50%);
+  width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--border);font-weight:900;font-size:13px;color:var(--gold);
+}
+.choice.picked{animation:pulsepick .55s ease infinite alternate;border-color:var(--gold);}
+@keyframes pulsepick{from{box-shadow:0 0 8px rgba(255,211,77,.4);}to{box-shadow:0 0 26px rgba(255,211,77,.9);}}
+.choice.correct{border-color:var(--green);background:linear-gradient(180deg,#0d3d26,#0a2d1d);animation:winflash .35s ease 3;}
+.choice.correct .letter{background:var(--green);color:#04140c;}
+@keyframes winflash{50%{box-shadow:0 0 34px rgba(46,234,139,.95);transform:scale(1.03);}}
+.choice.wrong{border-color:var(--red);background:linear-gradient(180deg,#451220,#330d18);}
+.choice.wrong .letter{background:var(--red);color:#fff;}
+.choice.dimmed{opacity:.25;}
+.explain{
+  margin-top:16px;background:rgba(77,195,255,.08);border-left:4px solid var(--blue);
+  border-radius:0 12px 12px 0;padding:13px 15px;font-size:14px;line-height:1.55;animation:slideIn .4s ease both;
+}
+.nextrow{display:flex;justify-content:flex-end;margin-top:14px;}
+.bigbtn{
+  font:inherit;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;
+  background:linear-gradient(180deg,var(--gold),var(--gold2));color:#221200;border:none;
+  border-radius:14px;padding:13px 30px;font-size:16px;
+  box-shadow:0 5px 0 #9a6a00, 0 8px 24px rgba(255,170,0,.4);transition:transform .1s, box-shadow .1s;
+}
+.bigbtn:hover{transform:translateY(-2px);}
+.bigbtn:active{transform:translateY(3px);box-shadow:0 1px 0 #9a6a00;}
+.bigbtn.ghost{background:transparent;color:var(--muted);border:2px solid var(--border);box-shadow:none;font-size:13px;padding:11px 20px;}
+
+/* stimulus (passages & media) */
+.stimulus{background:#f7f2e2;color:#1d1812;border:2px solid #d9cba4;border-radius:12px;padding:14px 16px;margin-bottom:16px;max-height:260px;overflow-y:auto;font-family:Georgia,'Times New Roman',serif;animation:slideIn .4s ease both;box-shadow:inset 0 0 18px rgba(120,90,30,.08);}
+.stimulus .ptext{font-size:14px;line-height:1.65;white-space:pre-wrap;}
+.stimulus .psrc{margin-top:10px;font-size:12px;color:#6b5d3f;font-style:italic;text-align:right;}
+.stim-imgs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:16px;animation:slideIn .4s ease both;}
+.stim-img{background:#fff;border:2px solid #d9cba4;border-radius:10px;padding:8px;max-width:100%;text-align:center;margin:0;}
+.stim-img img{max-width:100%;max-height:330px;object-fit:contain;cursor:zoom-in;border-radius:4px;}
+.stim-img figcaption{font-size:11.5px;color:#6b5d3f;margin-top:6px;font-style:italic;max-width:430px;margin-left:auto;margin-right:auto;}
+#lightbox{position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:120;display:none;align-items:center;justify-content:center;cursor:zoom-out;padding:18px;}
+#lightbox.show{display:flex;}
+#lightbox img{max-width:96vw;max-height:94vh;object-fit:contain;background:#fff;border-radius:8px;padding:6px;}
+
+/* lifelines */
+.lifelines{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.life{
+  font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;color:var(--text);
+  background:rgba(169,116,255,.15);border:2px solid var(--purple);border-radius:99px;padding:7px 14px;
+  transition:transform .12s, box-shadow .12s;
+}
+.life:hover:not(:disabled){transform:scale(1.06);box-shadow:0 0 16px rgba(169,116,255,.5);}
+.life:disabled{opacity:.3;cursor:default;}
+
+/* ladder */
+.ladder{
+  background:var(--panel);border:2px solid var(--border);border-radius:16px;padding:12px;
+  display:flex;flex-direction:column-reverse;gap:2px;max-height:78vh;overflow-y:auto;
+}
+.rung{display:flex;justify-content:space-between;font-size:11.5px;padding:3px 9px;border-radius:7px;color:var(--muted);}
+.rung b{color:var(--gold);font-variant-numeric:tabular-nums;}
+.rung.now{background:linear-gradient(90deg,var(--gold),var(--gold2));color:#221200;font-weight:900;animation:pulsepick .6s ease infinite alternate;}
+.rung.now b{color:#221200;}
+.rung.done{color:var(--green);} .rung.done b{color:var(--green);}
+.rung.milestone{border:1px dashed rgba(255,211,77,.5);}
+
+/* floating cash */
+.float-cash{
+  position:fixed;font-weight:900;font-size:30px;color:var(--gold);z-index:60;pointer-events:none;
+  text-shadow:0 0 18px rgba(255,211,77,.9), 0 2px 2px #000;animation:floatup 1.4s ease-out forwards;
+}
+@keyframes floatup{from{opacity:1;transform:translateY(0) scale(.7);}30%{transform:translateY(-30px) scale(1.25);}to{opacity:0;transform:translateY(-130px) scale(1);}}
+
+/* overlays */
+.overlay{
+  position:fixed;inset:0;z-index:80;display:flex;align-items:center;justify-content:center;
+  background:rgba(5,2,18,.86);backdrop-filter:blur(6px);padding:18px;
+}
+.overlay.hidden{display:none;}
+.panel{
+  background:linear-gradient(180deg,#231055,#150838);border:3px solid var(--gold);border-radius:26px;
+  max-width:680px;width:100%;padding:34px 30px;text-align:center;
+  box-shadow:0 0 60px rgba(255,211,77,.3);animation:popin .5s cubic-bezier(.2,1.6,.4,1) both;
+  max-height:92vh;overflow-y:auto;
+}
+@keyframes popin{from{opacity:0;transform:scale(.6);}to{opacity:1;transform:scale(1);}}
+.panel h2{font-size:clamp(24px,4.5vw,38px);font-weight:900;margin-bottom:8px;
+  background:linear-gradient(90deg,var(--gold),#fff,var(--gold));background-size:200%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 2.5s linear infinite;text-transform:uppercase;}
+.panel p{color:var(--muted);line-height:1.6;margin-bottom:12px;}
+.prize-emoji{font-size:84px;display:block;margin:8px 0;animation:bounce 1s ease infinite alternate;filter:drop-shadow(0 0 22px rgba(255,211,77,.8));}
+@keyframes bounce{from{transform:translateY(0) rotate(-4deg) scale(1);}to{transform:translateY(-16px) rotate(4deg) scale(1.1);}}
+.winnings-final{font-size:clamp(40px,8vw,64px);font-weight:900;color:var(--gold);text-shadow:0 0 30px rgba(255,211,77,.7);font-variant-numeric:tabular-nums;margin:6px 0;}
+.gradebadge{display:inline-block;border-radius:99px;padding:8px 22px;font-weight:900;font-size:17px;margin:6px 0 14px;}
+.gradebadge.pass{background:rgba(46,234,139,.15);border:2px solid var(--green);color:var(--green);}
+.gradebadge.fail{background:rgba(255,77,106,.15);border:2px solid var(--red);color:var(--red);}
+.shelf{font-size:46px;letter-spacing:10px;margin:6px 0 14px;min-height:56px;}
+.shelf span{display:inline-block;animation:bounce 1.2s ease infinite alternate;}
+.shelf span:nth-child(2){animation-delay:.2s;} .shelf span:nth-child(3){animation-delay:.4s;} .shelf span:nth-child(4){animation-delay:.6s;}
+.btnrow{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:10px;}
+.missed-review{text-align:left;margin-top:18px;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;}
+.missed-review .mi{background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:10px;padding:11px 13px;font-size:13px;line-height:1.5;}
+.missed-review .mi .a{color:var(--green);display:block;margin-top:6px;}
+.mutebtn{position:fixed;top:12px;right:14px;z-index:90;font-size:20px;background:var(--panel);border:2px solid var(--border);border-radius:50%;width:44px;height:44px;cursor:pointer;}
+</style>
+</head>
+<body>
+<canvas id="stars"></canvas>
+<canvas id="confettiCanvas"></canvas>
+<div id="lightbox"><img id="lightboxImg" alt="enlarged exam document"></div>
+<button class="mutebtn" id="muteBtn" title="Sound on/off">🔊</button>
+
+<div class="wrap">
+  <div class="marquee"><div class="bulbs"></div>
+    <h1>⭐ Regents Rush! ⭐</h1>
+    <div class="tagline">The U.S. History &amp; Government Quiz Spectacular</div>
+  </div>
+
+  <div class="hud">
+    <div class="hudbox"><div class="lab">Bank</div><div class="val" id="bankVal">$0</div></div>
+    <div class="hudbox"><div class="lab">Question</div><div class="val" id="qVal">–</div></div>
+    <div class="hudbox"><div class="lab">Streak</div><div class="val" id="streakVal">—</div></div>
+    <div class="hudbox"><div class="lab">Trophy Case</div><div class="val" id="prizeShelfMini"></div></div>
+  </div>
+
+  <div class="game">
+    <div class="stage" id="stage"></div>
+    <div class="ladder" id="ladder"></div>
+  </div>
+</div>
+
+<!-- START -->
+<div class="overlay" id="startOverlay">
+  <div class="panel">
+    <span class="prize-emoji">🎰</span>
+    <h2>Regents Rush!</h2>
+    <p>28 multiple-choice questions straight from the August 2025 U.S. History Regents.<br>
+    Climb the money ladder to <b style="color:var(--gold)">$1,000,000</b> · build 🔥 streaks for <b style="color:var(--gold)">2× and 3× multipliers</b> · win trophies at 7, 14, 21 and 28 correct.<br>
+    Real exam documents, photos &amp; cartoons on screen — click any image to zoom. Two 50:50s and one Skip. 30–50 seconds a question. Keys 1–4 work.</p>
+    <div class="btnrow"><button class="bigbtn" id="startBtn">▶ Start the Show!</button></div>
+  </div>
+</div>
+
+<!-- PRIZE -->
+<div class="overlay hidden" id="prizeOverlay">
+  <div class="panel">
+    <span class="prize-emoji" id="prizeEmoji">🥉</span>
+    <h2 id="prizeTitle">You won a prize!</h2>
+    <p id="prizeDesc"></p>
+    <div class="btnrow"><button class="bigbtn" id="prizeContinue">Keep Playing! →</button></div>
+  </div>
+</div>
+
+<!-- END -->
+<div class="overlay hidden" id="endOverlay">
+  <div class="panel">
+    <h2 id="endTitle">Final Results</h2>
+    <div class="winnings-final" id="endWinnings">$0</div>
+    <div><span class="gradebadge" id="endGrade"></span></div>
+    <p id="endLine"></p>
+    <div class="shelf" id="endShelf"></div>
+    <div class="btnrow">
+      <button class="bigbtn" id="playAgain">🎬 Play Again</button>
+      <button class="bigbtn ghost" id="retryMissed">Retry missed</button>
+    </div>
+    <div class="missed-review" id="missedReview"></div>
+  </div>
+</div>
+
+<script src="cards.js"></script>
+<script>
+const CARDS = ALL_CARDS.filter(c => c.type === 'mc');
+
+/* ---------- money ladder ---------- */
+const N = CARDS.length;
+function roundNice(v){ const m=Math.pow(10,Math.floor(Math.log10(v))-1); return Math.round(v/m)*m; }
+const LADDER = Array.from({length:N},(_,i)=> i===N-1 ? 1000000 : roundNice(100*Math.pow(10000,i/(N-1))));
+const fmt = v => '$'+v.toLocaleString('en-US');
+
+/* ---------- audio ---------- */
+let AC=null, muted=false;
+function ac(){ if(!AC) AC=new (window.AudioContext||window.webkitAudioContext)(); if(AC.state==='suspended')AC.resume(); return AC; }
+function tone(freq,start,dur,type='sine',gain=.15,endFreq){
+  if(muted) return; const a=ac(), o=a.createOscillator(), g=a.createGain(), t=a.currentTime+start;
+  o.type=type; o.frequency.setValueAtTime(freq,t); if(endFreq)o.frequency.exponentialRampToValueAtTime(endFreq,t+dur);
+  g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(gain,t+.012); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.connect(g).connect(a.destination); o.start(t); o.stop(t+dur+.05);
+}
+function noise(start,dur,gain=.2,freq=1000,q=.7){
+  if(muted) return; const a=ac(), t=a.currentTime+start, len=a.sampleRate*dur, buf=a.createBuffer(1,len,a.sampleRate), d=buf.getChannelData(0);
+  for(let i=0;i<len;i++)d[i]=Math.random()*2-1;
+  const s=a.createBufferSource(); s.buffer=buf;
+  const f=a.createBiquadFilter(); f.type='bandpass'; f.frequency.value=freq; f.Q.value=q;
+  const g=a.createGain(); g.gain.setValueAtTime(gain,t); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  s.connect(f).connect(g).connect(a.destination); s.start(t); s.stop(t+dur);
+}
+const sClick   = ()=> tone(900,0,.06,'square',.06);
+const sPick    = ()=> { tone(520,0,.25,'sine',.12); tone(660,.05,.3,'sine',.1); };
+const sCorrect = ()=> { [523,659,784,1047].forEach((f,i)=>tone(f,i*.09,.3,'triangle',.16)); noise(.36,.5,.1,3000,1); };
+const sWrong   = ()=> { tone(160,0,.5,'sawtooth',.18,90); tone(120,0,.5,'square',.12,70); };
+const sTick    = ()=> tone(1400,0,.04,'square',.05);
+const sCash    = ()=> { tone(1318,0,.09,'square',.1); tone(1760,.08,.18,'square',.1); };
+const sFanfare = ()=> { const seq=[[523,0],[523,.13],[523,.26],[659,.39],[784,.6],[659,.78],[784,.95]]; seq.forEach(([f,t])=>tone(f,t,.28,'triangle',.18)); [1047,1319,1568].forEach((f,i)=>tone(f,1.15+i*.05,.7,'triangle',.14)); };
+const sApplause= ()=> { for(let i=0;i<26;i++) noise(Math.random()*1.6,.06+Math.random()*.08,.12,2000+Math.random()*2500,1.5); };
+const sWoosh   = ()=> noise(0,.25,.12,600,.6);
+const sDrum    = ()=> { for(let i=0;i<14;i++) noise(i*.07,.05,.14,180,2); };
+
+document.getElementById('muteBtn').addEventListener('click',e=>{ muted=!muted; e.target.textContent=muted?'🔇':'🔊'; });
+
+/* ---------- starfield ---------- */
+(function(){
+  const c=document.getElementById('stars'),x=c.getContext('2d');
+  let stars=[];
+  function size(){ c.width=innerWidth; c.height=innerHeight; stars=Array.from({length:90},()=>({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.6+.4,p:Math.random()*Math.PI*2})); }
+  size(); addEventListener('resize',size);
+  (function loop(t){ x.clearRect(0,0,c.width,c.height); stars.forEach(s=>{ const a=.3+.7*Math.abs(Math.sin(t/900+s.p)); x.globalAlpha=a; x.fillStyle='#cdbfff'; x.beginPath(); x.arc(s.x,s.y,s.r,0,7); x.fill(); }); requestAnimationFrame(loop); })(0);
+})();
+
+/* ---------- confetti ---------- */
+const conf=(function(){
+  const c=document.getElementById('confettiCanvas'),x=c.getContext('2d');
+  function size(){c.width=innerWidth;c.height=innerHeight;} size(); addEventListener('resize',size);
+  let ps=[];
+  const colors=['#ffd34d','#ff4d6a','#2eea8b','#4dc3ff','#a974ff','#ff9d4d','#ffffff'];
+  function burst(n,cx,cy,spread=9){ for(let i=0;i<n;i++){ const a=Math.random()*Math.PI*2, v=2+Math.random()*spread;
+    ps.push({x:cx,y:cy,vx:Math.cos(a)*v,vy:Math.sin(a)*v-4,g:.18+Math.random()*.12,w:5+Math.random()*7,h:3+Math.random()*5,rot:Math.random()*7,vr:(Math.random()-.5)*.4,col:colors[Math.floor(Math.random()*colors.length)],life:80+Math.random()*60}); } }
+  function rain(n){ for(let i=0;i<n;i++) ps.push({x:Math.random()*c.width,y:-20-Math.random()*200,vx:(Math.random()-.5)*2,vy:2+Math.random()*3,g:.02,w:5+Math.random()*7,h:3+Math.random()*5,rot:Math.random()*7,vr:(Math.random()-.5)*.3,col:colors[Math.floor(Math.random()*colors.length)],life:300}); }
+  (function loop(){ x.clearRect(0,0,c.width,c.height);
+    ps=ps.filter(p=>p.life-->0 && p.y<c.height+30);
+    ps.forEach(p=>{ p.vy+=p.g; p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr;
+      x.save(); x.translate(p.x,p.y); x.rotate(p.rot); x.fillStyle=p.col; x.globalAlpha=Math.min(1,p.life/40); x.fillRect(-p.w/2,-p.h/2,p.w,p.h); x.restore(); });
+    requestAnimationFrame(loop); })();
+  return {burst,rain};
+})();
+
+/* ---------- game state ---------- */
+const PRIZES=[
+  {at:7,  emoji:'🥉', name:'THE BRONZE GAVEL', desc:'7 correct! The Founding Fathers nod approvingly. The Bronze Gavel of Justice is YOURS!'},
+  {at:14, emoji:'🔔', name:'THE SILVER LIBERTY BELL', desc:'14 correct! Ring it loud — the Silver Liberty Bell joins your trophy case!'},
+  {at:21, emoji:'🦅', name:'THE GOLDEN EAGLE', desc:'21 correct! Soaring like Manifest Destiny itself — the Golden Eagle is YOURS!'},
+  {at:28, emoji:'🏆', name:'THE PLATINUM CONSTITUTION', desc:'A PERFECT 28/28! WE THE PEOPLE crown you champion — the Platinum Constitution trophy!'}
+];
+let order=[], qi=0, bank=0, streak=0, best=0, correctCount=0, missed=[], wonPrizes=[], lives={fifty:2,skip:1};
+let phase='idle', timer=null, timeLeft=30, curTot=30;
+
+const stage=document.getElementById('stage');
+const $=id=>document.getElementById(id);
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function mult(){ return streak>=6?3:streak>=3?2:1; }
+
+function buildLadder(){
+  const L=$('ladder'); L.innerHTML='';
+  for(let i=0;i<order.length;i++){
+    const d=document.createElement('div'); d.className='rung'; d.id='rung'+i;
+    if([6,13,20,27].includes(i)) d.classList.add('milestone');
+    d.innerHTML='<span>Q'+(i+1)+'</span><b>'+fmt(LADDER[Math.min(i,LADDER.length-1)])+'</b>';
+    L.appendChild(d);
+  }
+}
+function updateHud(){
+  $('bankVal').textContent=fmt(bank);
+  $('qVal').textContent=(Math.min(qi+1,order.length))+'/'+order.length;
+  $('streakVal').textContent= streak>0 ? '🔥'.repeat(Math.min(streak,3))+' ×'+mult() : '—';
+  $('prizeShelfMini').textContent=wonPrizes.map(p=>p.emoji).join(' ');
+  document.querySelectorAll('.rung').forEach((r,i)=>{ r.classList.toggle('now',i===qi&&phase!=='over'); r.classList.toggle('done',i<qi); });
+  const now=$('rung'+qi); if(now) now.scrollIntoView({block:'nearest'});
+}
+function popBank(){ const b=$('bankVal'); b.classList.remove('bank-pop'); void b.offsetWidth; b.classList.add('bank-pop'); }
+function floatCash(txt,x,y){ const d=document.createElement('div'); d.className='float-cash'; d.textContent=txt; d.style.left=x+'px'; d.style.top=y+'px'; document.body.appendChild(d); setTimeout(()=>d.remove(),1500); }
+
+/* ---------- rounds ---------- */
+function startGame(custom){
+  order = custom && custom.length ? custom.slice() : shuffle(CARDS.map((_,i)=>i));
+  qi=0; bank=0; streak=0; best=0; correctCount=0; missed=[]; wonPrizes=[]; lives={fifty:2,skip:1};
+  buildLadder();
+  $('startOverlay').classList.add('hidden'); $('endOverlay').classList.add('hidden');
+  sWoosh(); renderQ();
+}
+
+function renderQ(){
+  phase='question';
+  const c=CARDS[order[qi]];
+  curTot=(c.passage||c.imgs)?50:30; timeLeft=curTot;
+  let html='<div class="lifelines">'
+    +'<button class="life" id="lifeFifty" '+(lives.fifty?'':'disabled')+'>⚡ 50:50 ×'+lives.fifty+'</button>'
+    +'<button class="life" id="lifeSkip" '+(lives.skip?'':'disabled')+'>🪂 Skip ×'+lives.skip+'</button>'
+    +'</div>';
+  html+='<div class="qmeta"><span>'+c.label+' · question '+(qi+1)+' of '+order.length+'</span><span class="forline">for '+fmt(LADDER[qi])+(mult()>1?' × '+mult()+' 🔥':'')+'</span></div>';
+  html+='<div class="timerwrap"><div id="timerFill"></div></div>';
+  if(c.passage) html+='<div class="stimulus"><div class="ptext">'+esc(c.passage)+'</div>'+(c.psource?'<div class="psrc">— '+esc(c.psource)+'</div>':'')+'</div>';
+  if(c.imgs) html+='<div class="stim-imgs">'+c.imgs.map(im=>'<figure class="stim-img"><img src="'+esc(im.src)+'" alt="'+esc(im.alt || im.cap || 'exam document')+'"><figcaption>'+esc(im.cap || '')+'</figcaption></figure>').join('')+'</div>';
+  html+='<div class="qtext">'+esc(c.stem)+'</div><div class="choices" id="choices">';
+  c.choices.forEach((ch,i)=>{ html+='<button class="choice" data-i="'+i+'"><span class="letter">'+'ABCD'[i]+'</span>'+esc(ch)+'</button>'; });
+  html+='</div><div id="post"></div>';
+  stage.innerHTML=html;
+  document.querySelectorAll('.choice').forEach(b=>b.addEventListener('click',()=>answer(parseInt(b.dataset.i))));
+  $('lifeFifty').addEventListener('click',useFifty);
+  $('lifeSkip').addEventListener('click',useSkip);
+  updateHud(); startTimer();
+}
+
+function startTimer(){
+  clearInterval(timer);
+  const f=$('timerFill'); f.style.width='100%';
+  timer=setInterval(()=>{
+    timeLeft--;
+    f.style.width=(timeLeft/curTot*100)+'%';
+    if(timeLeft<=10){ f.classList.add('danger'); sTick(); }
+    if(timeLeft<=0){ clearInterval(timer); timeOut(); }
+  },1000);
+}
+
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
+
+function useFifty(){
+  if(phase!=='question'||!lives.fifty) return;
+  lives.fifty--; sClick();
+  const c=CARDS[order[qi]];
+  const wrongs=shuffle([0,1,2,3].filter(i=>i!==c.answer)).slice(0,2);
+  wrongs.forEach(i=>{ const b=document.querySelector('.choice[data-i="'+i+'"]'); b.classList.add('dimmed'); b.disabled=true; });
+  $('lifeFifty').textContent='⚡ 50:50 ×'+lives.fifty; if(!lives.fifty)$('lifeFifty').disabled=true;
+}
+function useSkip(){
+  if(phase!=='question'||!lives.skip) return;
+  lives.skip--; sWoosh(); clearInterval(timer);
+  order.push(order.splice(qi,1)[0]); // move to end
+  buildLadder(); renderQ();
+}
+
+function timeOut(){
+  phase='revealed'; sWrong(); streak=0;
+  const c=CARDS[order[qi]];
+  document.querySelectorAll('.choice').forEach(b=>b.disabled=true);
+  document.querySelector('.choice[data-i="'+c.answer+'"]').classList.add('correct');
+  missed.push(order[qi]);
+  stage.classList.add('shake'); setTimeout(()=>stage.classList.remove('shake'),500);
+  showPost('⏰ TIME\'S UP! ', c);
+}
+
+function answer(i){
+  if(phase!=='question') return;
+  phase='locked'; clearInterval(timer);
+  const c=CARDS[order[qi]];
+  const btns=document.querySelectorAll('.choice');
+  btns.forEach(b=>b.disabled=true);
+  btns[i].classList.add('picked');
+  sPick(); sDrum();
+  setTimeout(()=>{
+    btns[i].classList.remove('picked');
+    phase='revealed';
+    btns[c.answer].classList.add('correct');
+    if(i===c.answer){
+      const win=LADDER[qi]*mult();
+      streak++; best=Math.max(best,streak); correctCount++; bank+=win;
+      sCorrect(); setTimeout(sCash,300);
+      popBank();
+      const r=btns[i].getBoundingClientRect();
+      conf.burst(70,r.left+r.width/2,r.top);
+      floatCash('+'+fmt(win),r.left+r.width/2-60,r.top-10);
+      showPost('✅ CORRECT! ',c);
+      checkPrize();
+    } else {
+      btns[i].classList.add('wrong');
+      sWrong(); streak=0; missed.push(order[qi]);
+      stage.classList.add('shake'); setTimeout(()=>stage.classList.remove('shake'),500);
+      showPost('❌ Not quite — ',c);
+    }
+    updateHud();
+  },1300);
+}
+
+function showPost(prefix,c){
+  $('post').innerHTML='<div class="explain"><b>'+prefix+'</b>'+esc(c.back)+'</div>'
+    +'<div class="nextrow"><button class="bigbtn" id="nextBtn">'+(qi+1>=order.length?'🏁 Final Results':'Next Question →')+'</button></div>';
+  $('nextBtn').addEventListener('click',next);
+  $('nextBtn').focus();
+}
+
+function checkPrize(){
+  const p=PRIZES.find(p=>p.at===correctCount && !wonPrizes.includes(p));
+  if(!p) return;
+  wonPrizes.push(p);
+  setTimeout(()=>{
+    $('prizeEmoji').textContent=p.emoji;
+    $('prizeTitle').textContent=p.name;
+    $('prizeDesc').textContent=p.desc;
+    $('prizeOverlay').classList.remove('hidden');
+    sFanfare(); sApplause();
+    conf.burst(120,innerWidth/2,innerHeight/3,12);
+    conf.rain(80);
+    updateHud();
+  },900);
+}
+$('prizeContinue').addEventListener('click',()=>{ sClick(); $('prizeOverlay').classList.add('hidden'); });
+
+function next(){
+  sClick(); qi++;
+  if(qi>=order.length) endGame(); else renderQ();
+}
+
+/* ---------- end ---------- */
+function endGame(){
+  phase='over'; clearInterval(timer); updateHud();
+  const total=order.length, pct=Math.round(correctCount/total*100), pass=pct>=65;
+  $('endOverlay').classList.remove('hidden');
+  $('endTitle').textContent = pct===100 ? '👑 FLAWLESS VICTORY!' : pass ? '🎉 YOU PASSED!' : '📚 Study Round Over';
+  $('endGrade').textContent = pct+'% — '+correctCount+'/'+total+(pass?' · PASSING (65 needed)':' · below the 65 cutoff');
+  $('endGrade').className='gradebadge '+(pass?'pass':'fail');
+  $('endLine').textContent = pct===100 ? 'A perfect game. The crowd is on its feet. Banner raised to the rafters!'
+    : pass ? 'Best streak: '+best+' 🔥 — retry the missed questions to go for the million!'
+    : 'Best streak: '+best+' 🔥 — hit "Retry missed" and climb back up the ladder!';
+  $('endShelf').innerHTML = wonPrizes.length? wonPrizes.map(p=>'<span title="'+p.name+'">'+p.emoji+'</span>').join('') : '<span style="font-size:15px;color:var(--muted)">No trophies yet — 7 correct wins the Bronze Gavel!</span>';
+  const mr=$('missedReview');
+  mr.innerHTML = missed.length? '<div style="font-weight:800;margin-bottom:4px;">Missed questions</div>'+missed.map(mi=>{const c=CARDS[mi];return '<div class="mi">'+esc(c.stem)+'<span class="a">✔ ('+(c.answer+1)+') '+esc(c.choices[c.answer])+'</span></div>';}).join('') : '';
+  // rolling counter + celebration
+  if(pass){ sFanfare(); sApplause(); conf.rain(160); let k=0; const fw=setInterval(()=>{ conf.burst(60,Math.random()*innerWidth,Math.random()*innerHeight*.5,11); if(++k>7)clearInterval(fw); },450); }
+  else sWoosh();
+  let shown=0; const step=Math.max(1,Math.round(bank/60));
+  const roll=setInterval(()=>{ shown+=step; if(shown>=bank){shown=bank;clearInterval(roll);} $('endWinnings').textContent=fmt(shown); if(shown%3===0)sTick(); },22);
+}
+
+$('startBtn').addEventListener('click',()=>{ ac(); sFanfare(); conf.burst(100,innerWidth/2,innerHeight/2,12); setTimeout(()=>startGame(),400); });
+$('playAgain').addEventListener('click',()=>{ sClick(); startGame(); });
+$('retryMissed').addEventListener('click',()=>{ sClick(); if(missed.length) startGame(shuffle(missed.slice())); else startGame(); });
+
+/* lightbox zoom for exam media */
+$('lightbox').addEventListener('click',()=>$('lightbox').classList.remove('show'));
+document.addEventListener('click',e=>{
+  if(e.target.matches('.stim-img img')){ $('lightboxImg').src=e.target.src; $('lightbox').classList.add('show'); sClick(); }
+});
+
+document.addEventListener('keydown',e=>{
+  if(phase==='question' && ['1','2','3','4'].includes(e.key)){ const b=document.querySelector('.choice[data-i="'+(parseInt(e.key)-1)+'"]'); if(b&&!b.disabled) answer(parseInt(e.key)-1); }
+  else if(phase==='revealed' && (e.code==='Space'||e.key==='Enter')){ e.preventDefault(); const nb=$('nextBtn'); if(nb) nb.click(); }
+});
+</script>
+</body>
+</html>
