@@ -139,6 +139,8 @@ function updateChrome(){
 
 function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 
+function snapToTop(){ requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'auto'})); }
+
 function renderStimulus(c){
   let html = '';
   if(c.passage) html += '<div class="stimulus"><div class="ptext">'+esc(c.passage)+'</div>'+(c.psource?'<div class="psrc">— '+esc(c.psource)+'</div>':'')+'</div>';
@@ -151,6 +153,7 @@ function render(){
   if(phase==='done'){ renderResults(); return; }
   const c = CARDS[deck[pos]];
   if(mode==='browse') renderBrowse(c); else renderQuiz(c);
+  snapToTop();
 }
 
 function renderQuiz(c){
@@ -234,6 +237,7 @@ function renderResults(){
   main.innerHTML = html;
   $('againBtn').addEventListener('click', ()=>restart());
   const rb = $('retryBtn'); if(rb) rb.addEventListener('click', ()=>restart(shuffle(missed.slice())));
+  snapToTop();
 }
 
 /* browse mode: simple flip */
