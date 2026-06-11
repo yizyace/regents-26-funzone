@@ -388,7 +388,7 @@ function renderQ(){
   html+='<div class="qmeta"><span>'+c.label+' · question '+(qi+1)+' of '+order.length+'</span><span class="forline">for '+fmt(LADDER[qi])+(mult()>1?' × '+mult()+' 🔥':'')+'</span></div>';
   html+='<div class="timerwrap"><div id="timerFill"></div></div>';
   if(c.passage) html+='<div class="stimulus"><div class="ptext">'+esc(c.passage)+'</div>'+(c.psource?'<div class="psrc">— '+esc(c.psource)+'</div>':'')+'</div>';
-  if(c.imgs) html+='<div class="stim-imgs">'+c.imgs.map(im=>'<figure class="stim-img"><img src="'+im.src+'" alt="exam document"><figcaption>'+esc(im.cap)+'</figcaption></figure>').join('')+'</div>';
+  if(c.imgs) html+='<div class="stim-imgs">'+c.imgs.map(im=>'<figure class="stim-img"><img src="'+esc(im.src)+'" alt="'+esc(im.alt || im.cap || 'exam document')+'"><figcaption>'+esc(im.cap || '')+'</figcaption></figure>').join('')+'</div>';
   html+='<div class="qtext">'+esc(c.stem)+'</div><div class="choices" id="choices">';
   c.choices.forEach((ch,i)=>{ html+='<button class="choice" data-i="'+i+'"><span class="letter">'+'ABCD'[i]+'</span>'+esc(ch)+'</button>'; });
   html+='</div><div id="post"></div>';

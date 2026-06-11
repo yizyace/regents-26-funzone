@@ -42,6 +42,13 @@
   .choice.wrong{border-color:var(--red); background:rgba(232,89,106,.12);}
   .explain{background:var(--panel2); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:14px 16px; font-size:14.5px; line-height:1.55; color:var(--text);}
   .explain.hidden,.hidden{display:none;}
+  .stimulus{background:#f7f2e2;color:#1d1812;border:1px solid #d9cba4;border-radius:12px;padding:14px 16px;font-family:Georgia,'Times New Roman',serif;max-height:280px;overflow-y:auto;}
+  .stimulus .ptext{font-size:14px;line-height:1.65;white-space:pre-wrap;}
+  .stimulus .psrc{margin-top:10px;font-size:12px;color:#6b5d3f;font-style:italic;text-align:right;}
+  .stim-imgs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .stim-img{background:#fff;border:1px solid #d9cba4;border-radius:10px;padding:8px;max-width:100%;text-align:center;margin:0;}
+  .stim-img img{max-width:100%;max-height:330px;object-fit:contain;border-radius:4px;}
+  .stim-img figcaption{font-size:11.5px;color:#6b5d3f;margin-top:6px;font-style:italic;max-width:430px;margin-left:auto;margin-right:auto;}
   .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto;}
   .selfgrade .btn.got{border-color:var(--green); color:var(--green); font-weight:600;}
   .selfgrade .btn.missed{border-color:var(--red); color:var(--red); font-weight:600;}
@@ -132,6 +139,13 @@ function updateChrome(){
 
 function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
 
+function renderStimulus(c){
+  let html = '';
+  if(c.passage) html += '<div class="stimulus"><div class="ptext">'+esc(c.passage)+'</div>'+(c.psource?'<div class="psrc">— '+esc(c.psource)+'</div>':'')+'</div>';
+  if(c.imgs) html += '<div class="stim-imgs">'+c.imgs.map(im=>'<figure class="stim-img"><img src="'+esc(im.src)+'" alt="'+esc(im.alt || im.cap || 'exam document')+'"><figcaption>'+esc(im.cap || '')+'</figcaption></figure>').join('')+'</div>';
+  return html;
+}
+
 function render(){
   updateChrome();
   if(phase==='done'){ renderResults(); return; }
@@ -141,6 +155,7 @@ function render(){
 
 function renderQuiz(c){
   let html = '<div class="card"><div class="qlabel"><span>'+(c.type==='mc'?'Multiple choice':'Short answer / essay — self-graded')+'</span><span>'+esc(c.label)+'</span></div>';
+  html += renderStimulus(c);
   html += '<div class="qtext">'+esc(c.type==='mc'?c.stem:c.front)+'</div>';
   if(c.type==='mc'){
     html += '<div class="choices">';
@@ -226,9 +241,9 @@ let flipped=false;
 function renderBrowse(c){
   flipped=false;
   const front = c.type==='mc' ? c.stem+'\n\n'+c.choices.map((ch,i)=>'('+(i+1)+') '+ch).join('\n') : c.front;
-  main.innerHTML = '<div class="card" id="flipCard" style="cursor:pointer;"><div class="qlabel"><span>'+esc(c.label)+'</span><span class="flip-hint">click / space to flip</span></div><div class="qtext" id="faceText">'+esc(front)+'</div><div class="actions"><button class="btn" id="prevBtn">← Prev</button><button class="btn primary" id="nxtBtn">Next →</button></div></div>';
+  main.innerHTML = '<div class="card" id="flipCard" style="cursor:pointer;"><div class="qlabel"><span>'+esc(c.label)+'</span><span class="flip-hint">click / space to flip</span></div>'+renderStimulus(c)+'<div class="qtext" id="faceText">'+esc(front)+'</div><div class="actions"><button class="btn" id="prevBtn">← Prev</button><button class="btn primary" id="nxtBtn">Next →</button></div></div>';
   const face=$('faceText');
-  $('flipCard').addEventListener('click',(e)=>{ if(e.target.tagName==='BUTTON')return; flipped=!flipped; face.textContent = flipped? c.back : front; face.style.color = flipped? 'var(--green)':'var(--text)'; });
+  $('flipCard').addEventListener('click',(e)=>{ if(e.target.tagName==='BUTTON'||e.target.closest('.stim-img'))return; flipped=!flipped; face.textContent = flipped? c.back : front; face.style.color = flipped? 'var(--green)':'var(--text)'; });
   $('prevBtn').addEventListener('click',()=>{ pos=(pos-1+deck.length)%deck.length; render(); });
   $('nxtBtn').addEventListener('click',()=>{ pos=(pos+1)%deck.length; render(); });
 }
