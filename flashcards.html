@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>USHG Regents — Jan 2026 Flash Cards</title>
+<style>
+  :root{
+    --bg:#0f1117; --panel:#181b25; --panel2:#1f2330; --text:#e8eaf2; --muted:#9aa0b4;
+    --accent:#5b8def; --green:#3ec97e; --red:#e8596a; --amber:#e8b339; --border:#2a2f40;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center;}
+  header{width:100%; max-width:880px; padding:20px 16px 8px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;}
+  h1{font-size:18px; font-weight:700;}
+  h1 span{color:var(--muted); font-weight:500; font-size:13px; display:block;}
+  .chips{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{background:var(--panel); border:1px solid var(--border); border-radius:999px; padding:6px 14px; font-size:13px; color:var(--muted);}
+  .chip b{color:var(--text);}
+  .chip.good b{color:var(--green);} .chip.bad b{color:var(--red);}
+  .controls{width:100%; max-width:880px; padding:4px 16px 12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  select,button{font:inherit;}
+  select{background:var(--panel); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:7px 10px; font-size:13px;}
+  .btn{background:var(--panel); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:7px 14px; font-size:13px; cursor:pointer; transition:background .15s;}
+  .btn:hover{background:var(--panel2);}
+  .btn.primary{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;}
+  .btn.primary:hover{filter:brightness(1.1);}
+  .progressbar{width:100%; max-width:880px; padding:0 16px;}
+  .progressbar .track{height:6px; background:var(--panel); border-radius:99px; overflow:hidden;}
+  .progressbar .fill{height:100%; background:var(--accent); width:0%; transition:width .25s;}
+  main{width:100%; max-width:880px; padding:16px; flex:1;}
+  .card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:26px; min-height:340px; display:flex; flex-direction:column; gap:18px;}
+  .qlabel{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:flex; justify-content:space-between;}
+  .qtext{font-size:18px; line-height:1.55; white-space:pre-wrap;}
+  .choices{display:grid; gap:10px;}
+  .choice{text-align:left; background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:13px 16px; font-size:15px; line-height:1.45; cursor:pointer; color:var(--text); transition:border-color .12s, background .12s;}
+  .choice:hover{border-color:var(--accent);}
+  .choice:disabled{cursor:default;}
+  .choice .num{color:var(--muted); margin-right:8px; font-weight:600;}
+  .choice.correct{border-color:var(--green); background:rgba(62,201,126,.12);}
+  .choice.wrong{border-color:var(--red); background:rgba(232,89,106,.12);}
+  .explain{background:var(--panel2); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:14px 16px; font-size:14.5px; line-height:1.55; color:var(--text);}
+  .explain.hidden,.hidden{display:none;}
+  .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto;}
+  .selfgrade .btn.got{border-color:var(--green); color:var(--green); font-weight:600;}
+  .selfgrade .btn.missed{border-color:var(--red); color:var(--red); font-weight:600;}
+  .kbd-hint{color:var(--muted); font-size:12px; padding:10px 16px; text-align:center;}
+  kbd{background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:1px 6px; font-size:11px;}
+  /* results */
+  .results{text-align:center; padding:30px 20px;}
+  .score-ring{width:170px; height:170px; margin:10px auto 6px; position:relative;}
+  .score-ring svg{transform:rotate(-90deg);}
+  .score-ring .pct{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .score-ring .pct b{font-size:38px;}
+  .score-ring .pct span{font-size:12px; color:var(--muted);}
+  .gradeline{font-size:20px; font-weight:700; margin:8px 0 2px;}
+  .gradeline.pass{color:var(--green);} .gradeline.fail{color:var(--red);}
+  .sub{color:var(--muted); font-size:14px; margin-bottom:18px;}
+  .missed-list{text-align:left; max-width:760px; margin:18px auto; display:flex; flex-direction:column; gap:10px;}
+  .missed-item{background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:14px 16px; font-size:14px; line-height:1.5;}
+  .missed-item .mq{color:var(--text); margin-bottom:8px;}
+  .missed-item .ma{color:var(--green);}
+  .flip-hint{color:var(--muted); font-size:13px;}
+  @media (max-width:560px){ .qtext{font-size:16px;} .card{padding:18px;} }
+</style>
+</head>
+<body>
+<header>
+  <h1>U.S. History &amp; Government Regents — Jan 2026<span>Flash cards · 37 cards from the exam</span></h1>
+  <div class="chips">
+    <span class="chip">Card <b id="posChip">–</b></span>
+    <span class="chip good">✓ <b id="rightChip">0</b></span>
+    <span class="chip bad">✗ <b id="wrongChip">0</b></span>
+  </div>
+</header>
+
+<div class="controls">
+  <select id="modeSel" title="Mode">
+    <option value="quiz">Quiz mode (graded)</option>
+    <option value="browse">Browse mode (flip cards)</option>
+  </select>
+  <select id="filterSel" title="Card filter">
+    <option value="all">All cards (37)</option>
+    <option value="mc">Multiple choice only (28)</option>
+    <option value="free">Short answer / essay only (9)</option>
+  </select>
+  <label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;">
+    <input type="checkbox" id="shuffleChk" checked> Shuffle
+  </label>
+  <button class="btn" id="restartBtn">Restart round</button>
+</div>
+
+<div class="progressbar"><div class="track"><div class="fill" id="progFill"></div></div></div>
+
+<main id="main"></main>
+<div class="kbd-hint">Keys: <kbd>1</kbd>–<kbd>4</kbd> answer · <kbd>space</kbd> show answer / next · <kbd>G</kbd> got it · <kbd>M</kbd> missed it</div>
+
+<script>
+const CARDS = [{"type": "mc", "label": "Q1", "stem": "Q1. (John Robinson, Farewell Address to the Pilgrims, 1620 — colonists are a 'body politic' with officers 'to be chosen by you') What is the author's point of view about the role of government in the Plymouth Colony?", "choices": ["Separate leaders for church and state should be elected", "People have the right to rebel against the government", "The power to govern belongs to the people", "Rulers must be given absolute authority to govern"], "answer": 2, "back": "(3) The power to govern belongs to the people — Robinson says leaders are 'to be chosen by you into office of government,' meaning self-government by consent of the governed."}, {"type": "mc", "label": "Q2", "stem": "Q2. Which document most closely reflects the ideas about government expressed by John Robinson in this address?", "choices": ["Mayflower Compact", "Maryland Toleration Act", "Stamp Act", "Townshend Acts"], "answer": 0, "back": "(1) Mayflower Compact — the Pilgrims' 1620 agreement to form a self-governing 'civil body politic' and obey laws made for the common good."}, {"type": "mc", "label": "Q3", "stem": "Q3. (Centinel No. 5, Fall 1787 — warns that the 'necessary and proper' clause lets Congress override state laws) This passage was written during the", "choices": ["debate over the adoption of the Articles of Confederation", "ratification of the United States Constitution", "nullification crisis in Virginia and Kentucky", "controversy over the War of 1812"], "answer": 1, "back": "(2) ratification of the United States Constitution — Centinel was an Anti-Federalist essay written in fall 1787 during the ratification debate."}, {"type": "mc", "label": "Q4", "stem": "Q4. Which claim about the proposed United States Constitution is being made by the author of this passage (Centinel No. 5)?", "choices": ["The new Constitution gave the states enough power to avoid tyranny", "The elastic clause would give too much power to Congress", "The system of federalism is best for the new nation", "The two-party system would lead to rebellion in the future"], "answer": 1, "back": "(2) The elastic (necessary and proper) clause would give too much power to Congress — a classic Anti-Federalist fear that Congress could 'controul and abrogate' state laws."}, {"type": "mc", "label": "Q5", "stem": "Q5. (President Andrew Jackson, Message to Congress on Indian Removal, 1830) Which statement best describes the claims made by Jackson in this passage?", "choices": ["The U.S. government must obey past treaties made with Native Americans", "White settlers must work harder to get along with Native Americans", "Native Americans had agreed to assimilate into American society", "The relocation of Native Americans will assist both them and white settlers"], "answer": 3, "back": "(4) The relocation of Native Americans will assist both them and white settlers — Jackson claims removal will free Mississippi/Alabama for whites while supposedly 'protecting' and 'civilizing' Native Americans."}, {"type": "mc", "label": "Q6", "stem": "Q6. What was one result of President Jackson's message to Congress on Indian Removal?", "choices": ["Trail of Tears", "annexation of Texas", "Dred Scott decision", "Grange Movement"], "answer": 0, "back": "(1) Trail of Tears — the Indian Removal Act (1830) led to the forced relocation of the Cherokee and other nations west of the Mississippi; thousands died on the journey."}, {"type": "mc", "label": "Q7", "stem": "Q7. (Homestead Certificate for Daniel Freeman, 1868 — 160 acres under the Homestead Act of 1862) This certificate supports a national commitment to what policy?", "choices": ["Monroe Doctrine", "isolationism", "Manifest Destiny", "détente"], "answer": 2, "back": "(3) Manifest Destiny — the Homestead Act gave 160 acres of free public land to settlers, encouraging westward expansion across the continent."}, {"type": "mc", "label": "Q8", "stem": "Q8. What area of the United States was most affected by the program described in this document (Homestead Act)?", "choices": ["the Southwest deserts", "the Great Plains", "the Hudson Valley", "the Pacific Northwest"], "answer": 1, "back": "(2) the Great Plains — most homestead claims were on the open grasslands of the Plains states (e.g., Nebraska, Kansas, the Dakotas)."}, {"type": "mc", "label": "Q9", "stem": "Q9. (Plessy v. Ferguson, 1896 — 'enforced separation of the races' does not violate the 14th Amendment) Which phrase is most closely associated with the ideas expressed in this excerpt?", "choices": ["'separate but equal'", "'clear and present danger'", "'all men are created equal'", "'necessary and proper'"], "answer": 0, "back": "(1) 'separate but equal' — Plessy v. Ferguson (1896) ruled that racial segregation was constitutional if facilities were equal."}, {"type": "mc", "label": "Q10", "stem": "Q10. What was an effect of the Supreme Court's decision in Plessy v. Ferguson?", "choices": ["The Freedmen's Bureau was established", "The Underground Railroad was formed", "The practice of segregation was reinforced", "Voting rights were enhanced by grandfather clauses"], "answer": 2, "back": "(3) The practice of segregation was reinforced — the ruling gave legal backing to Jim Crow segregation laws until Brown v. Board of Education (1954) overturned it."}, {"type": "mc", "label": "Q11", "stem": "Q11. (Jacob Riis photograph, How the Other Half Lives, 1890 — crowded tenement lodgers) The purpose of this photograph was to", "choices": ["raise public awareness for conditions in the tenements", "support unrestricted immigration", "expose the unsafe working conditions in factories", "promote the use of child labor"], "answer": 0, "back": "(1) raise public awareness for conditions in the tenements — Riis was a muckraker who used photography to expose urban poverty and overcrowded slum housing."}, {"type": "mc", "label": "Q12", "stem": "Q12. Individuals who were influenced by the work of Jacob Riis would most likely agree that", "choices": ["federal income taxes should be eliminated", "monopolistic business practices should be encouraged", "labor unions should be banned", "social and economic reforms should be addressed by the government"], "answer": 3, "back": "(4) social and economic reforms should be addressed by the government — Riis inspired Progressive Era reforms such as tenement housing laws."}, {"type": "mc", "label": "Q13", "stem": "Q13. (Photos of the USS Maine before and after its 1898 destruction) Photographs such as these were often published to", "choices": ["increase newspaper sales", "discourage investigative journalists", "support restrictions on the freedom of the press", "pressure reporters to reveal their sources"], "answer": 0, "back": "(1) increase newspaper sales — yellow journalism (Hearst and Pulitzer) sensationalized the Maine explosion to sell papers."}, {"type": "mc", "label": "Q14", "stem": "Q14. What was one outcome of the destruction of the USS Maine?", "choices": ["Spanish officials responsible were put on trial", "Spain strengthened its control over Cuba", "Public support for a declaration of war against Spain increased", "Spain paid to rebuild the ship and compensate the victims"], "answer": 2, "back": "(3) Public support for a declaration of war against Spain increased — 'Remember the Maine!' helped push the U.S. into the Spanish-American War (1898)."}, {"type": "mc", "label": "Q15", "stem": "Q15. (Theodore Roosevelt, First Annual Message to Congress, 1901 — the nation should supervise and regulate trusts doing interstate business) Which constitutional provision supports TR's view regarding large corporations?", "choices": ["reserved powers of the states", "presidential veto", "eminent domain", "congressional power to regulate interstate commerce"], "answer": 3, "back": "(4) congressional power to regulate interstate commerce — the Commerce Clause justified federal regulation of corporations operating across state lines."}, {"type": "mc", "label": "Q16", "stem": "Q16. Which United States economic policy did President Roosevelt's message challenge?", "choices": ["mercantilism", "laissez-faire", "protectionism", "supply-side"], "answer": 1, "back": "(2) laissez-faire — TR rejected the hands-off approach by calling for federal supervision and regulation of trusts."}, {"type": "mc", "label": "Q17", "stem": "Q17. (Woodrow Wilson, Joint Address to Congress, 1917) In this address, why does Wilson conclude that neutrality is no longer a practical United States policy?", "choices": ["The German government has invaded U.S. territory", "United States ships and citizens are being attacked by German submarines", "The Allies have committed several acts of war", "Germany broke a series of peace treaties"], "answer": 1, "back": "(2) United States ships and citizens are being attacked by German submarines — Germany's unrestricted submarine warfare made armed neutrality 'impracticable.'"}, {"type": "mc", "label": "Q18", "stem": "Q18. How did Congress respond to President Wilson's 1917 address?", "choices": ["They sent negotiators to meet with representatives", "They voted to declare war against Germany", "They placed an embargo on all goods shipped to and from Germany", "They asked the League of Nations to stop Germany's use of submarine warfare"], "answer": 1, "back": "(2) They voted to declare war against Germany — Congress declared war in April 1917, bringing the U.S. into World War I."}, {"type": "mc", "label": "Q19", "stem": "Q19. (Social Security Board poster, 1936 — 'Join the march to old age security') The purpose of this 1936 poster was to encourage Americans to", "choices": ["sign up for government jobs", "receive low-cost medical insurance", "enroll in a national retirement system", "exercise their right to vote in national elections"], "answer": 2, "back": "(3) enroll in a national retirement system — the poster urged workers to apply for Social Security account numbers under the Social Security Act (1935), a New Deal program."}, {"type": "mc", "label": "Q20", "stem": "Q20. (Justice Robert H. Jackson, Opening Statement, Nuremberg Trials, 1945) The purpose of the Nuremberg Trials was to", "choices": ["force Germany to pay war reparations", "punish Germany for the blitzkrieg military campaign through Europe", "warn the German people about the Nazi party", "hold German leaders accountable for crimes against humanity"], "answer": 3, "back": "(4) hold German leaders accountable for crimes against humanity — Nazi leaders were tried for war crimes including the Holocaust, establishing that individuals are responsible under international law."}, {"type": "mc", "label": "Q21", "stem": "Q21. (Map: 'The Tide of Communism,' Europe 1946 — Soviet Union and Soviet-dominated Eastern Europe) What was the United States response to the situation shown on this map?", "choices": ["providing financial aid to Western European nations", "immediate military action against the Soviet Union", "a call for the United Nations to send forces to Eastern Europe", "withdrawal of financial support for NATO"], "answer": 0, "back": "(1) providing financial aid to Western European nations — the Marshall Plan (1948) and Truman Doctrine aimed to contain the spread of communism."}, {"type": "mc", "label": "Q22", "stem": "Q22. (Joseph McCarthy's Wheeling speech claiming 205 communists in the State Department, 1950 + Margaret Chase Smith's Declaration of Conscience defending the right to criticize, protest, and hold unpopular beliefs, 1950) A historian would find these excerpts useful for studying the", "choices": ["impact of the Red Scare on civil liberties", "opposition to New Deal reforms", "debates over international affairs", "concerns over executive cabinet appointments"], "answer": 0, "back": "(1) impact of the Red Scare on civil liberties — McCarthy's accusations vs. Smith's defense of basic American freedoms illustrate the McCarthyism debate."}, {"type": "mc", "label": "Q23", "stem": "Q23. (Herblock cartoon, 'Tsk Tsk—Somebody Should Do Something About That,' Washington Post, 1956 — fire chief watches 'Civil Rights Crisis' burn) This cartoonist is criticizing President Eisenhower for failing to", "choices": ["provide government support for public housing", "promote equality for African Americans", "address natural disasters in the South", "enforce strict public safety measures"], "answer": 1, "back": "(2) promote equality for African Americans — Herblock depicts Eisenhower as a fire chief passively watching the civil rights crisis burn instead of acting."}, {"type": "mc", "label": "Q24", "stem": "Q24. In 1957, President Eisenhower dealt with a civil rights crisis in Little Rock, Arkansas, by sending troops to", "choices": ["enforce a Supreme Court decision on school integration", "protect freedom riders on interstate buses", "arrest leaders of the Ku Klux Klan", "stop the violence during voter registration drives"], "answer": 0, "back": "(1) enforce a Supreme Court decision on school integration — Eisenhower sent the 101st Airborne to escort the Little Rock Nine into Central High School, enforcing Brown v. Board of Education (1954)."}, {"type": "mc", "label": "Q25", "stem": "Q25. (President Nixon, Address to the Nation, April 30, 1973 — aides charged in the Watergate affair) What was one outcome associated with the Watergate affair?", "choices": ["The Vietnam War continued to expand", "Trade with China expanded rapidly", "Support for immigration reform increased", "President Nixon eventually resigned from the presidency"], "answer": 3, "back": "(4) President Nixon eventually resigned from the presidency — facing impeachment over the cover-up, Nixon resigned in August 1974, the only president ever to do so."}, {"type": "mc", "label": "Q26", "stem": "Q26. (Jack Ohman cartoon, The Oregonian, 1992 — 'War Powers' tree with a huge muscular Executive Branch limb and a withered Legislative Branch limb on an IV) Which statement is best supported by the idea expressed in this cartoon?", "choices": ["War powers are divided equally between the branches", "The legislative branch has refused to exercise its war powers", "The war powers of the executive branch have expanded", "The war powers of the executive branch are often checked by the judicial branch"], "answer": 2, "back": "(3) The war powers of the executive branch have expanded — the cartoon shows the executive branch's war powers as strong and growing while Congress's have withered."}, {"type": "mc", "label": "Q27", "stem": "Q27. (Dana Summers cartoon, 2015 — Uncle Sam holding the Patriot Act with one man shouting 'PRIVACY!' and another 'SECURITY!') Which problem is represented in this cartoon?", "choices": ["Americans were confused by the wording of the new law", "The Patriot Act did not apply to enough people", "The Patriot Act, while keeping the nation safe, would violate the rights of individuals", "Individuals were concerned the Patriot Act did not make the nation safe enough"], "answer": 2, "back": "(3) The Patriot Act, while keeping the nation safe, would violate the rights of individuals — the cartoon captures the privacy vs. security debate over expanded government surveillance."}, {"type": "mc", "label": "Q28", "stem": "Q28. Which event most directly led to the passage of the Patriot Act?", "choices": ["Iraq's invasion of Kuwait", "end of the Cold War", "Soviet launching of Sputnik", "terrorist attacks on the United States on September 11, 2001"], "answer": 3, "back": "(4) the terrorist attacks of September 11, 2001 — the Patriot Act (October 2001) expanded surveillance and law-enforcement powers to fight terrorism."}, {"type": "self", "label": "Q29", "front": "Q29 (Part II, SEQ Set 1). Documents: graphs of rising unemployment (~2 to ~13 million) and bank failures (1929–1933) with falling income and spending + FDR's First Inaugural Address (March 4, 1933). Task: Describe the historical context AND identify and explain the relationship (Cause and Effect, Similarity/Difference, or Turning Point) between the documents.", "back": "Model answer — Context: the Great Depression. After the October 1929 stock market crash, the economy collapsed: unemployment rose to about 13 million (roughly 25%), thousands of banks failed and wiped out savings, and average income and consumer spending fell sharply, while Hoover's limited response left conditions worsening. Relationship: Cause and Effect — the economic collapse in Document 1 caused the response in Document 2. FDR's inaugural promised to put people to work and impose 'strict supervision of all banking and credits and investments,' which became the New Deal: the bank holiday and Emergency Banking Act, FDIC, SEC, CCC, and WPA (relief, recovery, reform). (Could also be framed as a Turning Point: the Depression ended laissez-faire government and began an era of federal responsibility for the economy.)"}, {"type": "self", "label": "Q30", "front": "Q30 (Part II, SEQ Set 2). Documents: James Guthrie (Secretary of the Treasury), 'The Impact of the Erie Canal,' annual report to Congress, 1853 + map of Great Lakes shipping (iron ore, coal, grain to steel and manufacturing centers). Task: Describe the historical context of Documents 1 and 2 AND analyze how audience, purpose, bias, or point of view affects Document 1's reliability as evidence.", "back": "Model answer — Context: the Erie Canal opened in 1825, linking the Great Lakes to the Hudson River and New York City. It cut shipping costs dramatically, spurred westward settlement and the Market Revolution, made NYC the nation's leading port, gave western farmers a market for their crops, and gave the East cheap food and markets for manufactured goods — the Great Lakes shipping network in Document 2 grew from this canal-era trade. Reliability: Guthrie's audience was Congress and his purpose was an official Treasury report on the economy, so his facts about trade and growth are credible; but his point of view is strongly celebratory (the West would be 'uncultivated wilderness' without it), so his sweeping claims overstate the canal as the sole cause of growth and should be checked against other sources."}, {"type": "self", "label": "Q31", "front": "Q31 (Civic Literacy, Doc 1 — L. Ames Brown, 'Prohibition,' North American Review, 1915). According to Brown, what is ONE historical circumstance surrounding the issue of Prohibition?", "back": "Heavy drinking was widespread in early America — per capita consumption of spirits was many times later levels, a large rum trade grew after the War of 1812, and drunkenness 'in its worst form' caused disastrous social consequences (seen in the jails and poorhouses). Prohibition grew out of the temperance crusades of the first half of the 1800s."}, {"type": "self", "label": "Q32", "front": "Q32 (Civic Literacy, Doc 2 — Anti-Saloon League ratification map and statement, 1919). According to this poster, what is ONE historical circumstance surrounding the issue of Prohibition?", "back": "By January 31, 1919, all but four states had ratified the National Prohibition (18th) Amendment — the result of more than 25 years of organized effort by the Anti-Saloon League, which called it the greatest victory for moral reform since the Declaration of Independence and now sought strict enforcement legislation."}, {"type": "self", "label": "Q33", "front": "Q33 (Civic Literacy, Doc 3 — Charles Rappleye, Herbert Hoover in the White House, 2016). Based on this document, what was ONE effort to address the issue of Prohibition?", "back": "President Hoover enforced Prohibition aggressively: in 1929 he signed the 'Five and Ten Law' making every liquor violation a felony, and his Justice Department increased federal enforcement — multiplying fines, padlockings, confiscations, and jailings of violators. (By 1932, public opinion had swung heavily toward repeal — the Literary Digest poll favored repeal four to one.)"}, {"type": "self", "label": "Q34", "front": "Q34 (Civic Literacy, Doc 4 — Sarah Seidman, 'The New York Women Who Dismantled Prohibition,' 2015). According to Seidman, what was ONE effort to address Prohibition?", "back": "The Women's Organization for National Prohibition Reform (WONPR), founded in 1929 and led by Pauline Sabin, campaigned for repeal — attending meetings, giving speeches at rallies, going door-to-door to recruit supporters, using radio to spread its message, lobbying politicians, and raising funds even during the Depression. Members believed Prohibition had increased unregulated and underage drinking and distrust for the rule of law."}, {"type": "self", "label": "Q35", "front": "Q35 (Civic Literacy, Doc 5 — Michael A. Lerner, Dry Manhattan, 2007). According to Lerner, what has been ONE impact of the efforts to address Prohibition?", "back": "Prohibition failed: despite federal law, authoritarian enforcement tactics, and millions of dollars a year, fourteen years of Prohibition neither changed Americans' drinking behavior nor eliminated the problems of alcohol abuse. Its spectacular failure revealed the limits of moral reform movements and the paternalistic, prejudiced, undemocratic ideals behind the dry crusade."}, {"type": "self", "label": "Q36", "front": "Q36 (Civic Literacy, Doc 6 — New York Times front page, December 6, 1933). Based on this document, what is ONE impact of the efforts to address Prohibition?", "back": "Prohibition was repealed — the 21st Amendment was ratified on December 5, 1933 (Utah cast the deciding vote), ending national Prohibition. Effects shown: celebrations (with 'quiet restraint'), speakeasies closing, legal liquor returning (though scarce), and recovery of about $227 million a year in alcohol taxes."}, {"type": "self", "label": "Q37", "front": "Q37 (Part B Civic Literacy Essay — Prohibition). Write an essay that: describes the historical circumstances surrounding Prohibition, explains at least TWO efforts by individuals/groups/governments to address it, and discusses the impact on the U.S./American society (use at least 4 documents + outside info).", "back": "Essay outline — Circumstances (Docs 1, 2): widespread heavy drinking and its social damage fueled the 1800s temperance movement (WCTU, Anti-Saloon League); Progressive Era reform energy and anti-German WWI sentiment led to the 18th Amendment (ratified 1919) and the Volstead Act. Efforts (pick 2+): (a) government enforcement — Hoover's Five and Ten Law and expanded federal prosecution (Doc 3); (b) repeal campaigns — Pauline Sabin's WONPR rallies, door-to-door recruiting, radio, and lobbying (Doc 4); (c) the Anti-Saloon League's 25-year ratification drive (Doc 2). Impact (Docs 5, 6 + outside info): Prohibition failed to change behavior; it bred speakeasies, bootlegging, and organized crime (Al Capone) and disrespect for law; the 21st Amendment (1933) repealed it — the only amendment to repeal another — restoring tax revenue during the Depression and showing the limits of legislating morality."}];
+
+let deck = [], pos = 0, right = 0, wrong = 0, missed = [];
+let phase = 'question'; // question | revealed | done
+let mode = 'quiz';
+
+const $ = id => document.getElementById(id);
+const main = $('main');
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+function buildDeck(){
+  const f = $('filterSel').value;
+  let idx = CARDS.map((c,i)=>i).filter(i => f==='all' || (f==='mc' ? CARDS[i].type==='mc' : CARDS[i].type==='self'));
+  if($('shuffleChk').checked) shuffle(idx);
+  return idx;
+}
+
+function restart(custom){
+  deck = custom && custom.length ? custom.slice() : buildDeck();
+  pos = 0; right = 0; wrong = 0; missed = []; phase='question';
+  mode = $('modeSel').value;
+  render();
+}
+
+function updateChrome(){
+  $('posChip').textContent = phase==='done' ? deck.length+'/'+deck.length : (pos+1)+'/'+deck.length;
+  $('rightChip').textContent = right;
+  $('wrongChip').textContent = wrong;
+  $('progFill').style.width = (phase==='done' ? 100 : (pos/deck.length)*100) + '%';
+}
+
+function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+function render(){
+  updateChrome();
+  if(phase==='done'){ renderResults(); return; }
+  const c = CARDS[deck[pos]];
+  if(mode==='browse') renderBrowse(c); else renderQuiz(c);
+}
+
+function renderQuiz(c){
+  let html = '<div class="card"><div class="qlabel"><span>'+(c.type==='mc'?'Multiple choice':'Short answer / essay — self-graded')+'</span><span>'+esc(c.label)+'</span></div>';
+  html += '<div class="qtext">'+esc(c.type==='mc'?c.stem:c.front)+'</div>';
+  if(c.type==='mc'){
+    html += '<div class="choices">';
+    c.choices.forEach((ch,i)=>{ html += '<button class="choice" data-i="'+i+'"><span class="num">('+(i+1)+')</span>'+esc(ch)+'</button>'; });
+    html += '</div>';
+    html += '<div class="explain hidden" id="explain">'+esc(c.back)+'</div>';
+    html += '<div class="actions"><button class="btn primary hidden" id="nextBtn">Next →</button></div>';
+  } else {
+    html += '<div class="explain hidden" id="explain">'+esc(c.back)+'</div>';
+    html += '<div class="actions" id="selfActions"><button class="btn primary" id="revealBtn">Show answer (space)</button></div>';
+  }
+  html += '</div>';
+  main.innerHTML = html;
+
+  if(c.type==='mc'){
+    main.querySelectorAll('.choice').forEach(b => b.addEventListener('click', ()=>choose(parseInt(b.dataset.i))));
+    $('nextBtn').addEventListener('click', next);
+  } else {
+    $('revealBtn').addEventListener('click', reveal);
+  }
+}
+
+function choose(i){
+  if(phase!=='question') return;
+  const c = CARDS[deck[pos]];
+  phase='revealed';
+  const btns = main.querySelectorAll('.choice');
+  btns.forEach(b=>b.disabled=true);
+  btns[c.answer].classList.add('correct');
+  if(i===c.answer){ right++; } else { wrong++; btns[i].classList.add('wrong'); missed.push(deck[pos]); }
+  $('explain').classList.remove('hidden');
+  $('nextBtn').classList.remove('hidden');
+  $('nextBtn').focus();
+  updateChrome();
+}
+
+function reveal(){
+  if(phase!=='question') return;
+  phase='revealed';
+  $('explain').classList.remove('hidden');
+  $('selfActions').innerHTML = '<div class="selfgrade actions"><button class="btn got" id="gotBtn">✓ I got it (G)</button><button class="btn missed" id="missBtn">✗ I missed it (M)</button></div>';
+  $('gotBtn').addEventListener('click', ()=>selfGrade(true));
+  $('missBtn').addEventListener('click', ()=>selfGrade(false));
+}
+
+function selfGrade(ok){
+  if(phase!=='revealed') return;
+  if(ok) right++; else { wrong++; missed.push(deck[pos]); }
+  next();
+}
+
+function next(){
+  pos++;
+  if(pos>=deck.length){ phase='done'; } else { phase='question'; }
+  render();
+}
+
+function renderResults(){
+  updateChrome();
+  const total = right+wrong;
+  const pct = total? Math.round(right/total*100) : 0;
+  const pass = pct>=65;
+  const letter = pct>=90?'A':pct>=80?'B':pct>=65?'C':pct>=50?'D':'F';
+  const circ = 2*Math.PI*70;
+  let html = '<div class="card results">';
+  html += '<div class="score-ring"><svg width="170" height="170"><circle cx="85" cy="85" r="70" fill="none" stroke="var(--panel2)" stroke-width="14"/><circle cx="85" cy="85" r="70" fill="none" stroke="'+(pass?'var(--green)':'var(--red)')+'" stroke-width="14" stroke-linecap="round" stroke-dasharray="'+circ+'" stroke-dashoffset="'+(circ*(1-pct/100))+'"/></svg><div class="pct"><b>'+pct+'%</b><span>'+right+' / '+total+' correct</span></div></div>';
+  html += '<div class="gradeline '+(pass?'pass':'fail')+'">Grade: '+letter+' — '+(pass?'PASSING (Regents cutoff is 65)':'below the 65 Regents passing cutoff')+'</div>';
+  html += '<div class="sub">'+(pct===100?'Perfect round. Exam-ready.':pass?'Solid — drill the misses below and run it again.':'Keep at it — retry the missed cards below.')+'</div>';
+  html += '<div class="actions" style="justify-content:center;"><button class="btn primary" id="againBtn">New round</button>'+(missed.length?'<button class="btn" id="retryBtn">Retry missed ('+missed.length+')</button>':'')+'</div>';
+  if(missed.length){
+    html += '<div class="missed-list"><div style="font-weight:700;font-size:15px;">Missed cards</div>';
+    missed.forEach(mi=>{ const c=CARDS[mi]; html += '<div class="missed-item"><div class="mq">'+esc(c.type==='mc'?c.stem:c.front)+'</div><div class="ma">'+esc(c.type==='mc' ? '('+(c.answer+1)+') '+c.choices[c.answer] : c.back)+'</div></div>'; });
+    html += '</div>';
+  }
+  html += '</div>';
+  main.innerHTML = html;
+  $('againBtn').addEventListener('click', ()=>restart());
+  const rb = $('retryBtn'); if(rb) rb.addEventListener('click', ()=>restart(shuffle(missed.slice())));
+}
+
+/* browse mode: simple flip */
+let flipped=false;
+function renderBrowse(c){
+  flipped=false;
+  const front = c.type==='mc' ? c.stem+'\n\n'+c.choices.map((ch,i)=>'('+(i+1)+') '+ch).join('\n') : c.front;
+  main.innerHTML = '<div class="card" id="flipCard" style="cursor:pointer;"><div class="qlabel"><span>'+esc(c.label)+'</span><span class="flip-hint">click / space to flip</span></div><div class="qtext" id="faceText">'+esc(front)+'</div><div class="actions"><button class="btn" id="prevBtn">← Prev</button><button class="btn primary" id="nxtBtn">Next →</button></div></div>';
+  const face=$('faceText');
+  $('flipCard').addEventListener('click',(e)=>{ if(e.target.tagName==='BUTTON')return; flipped=!flipped; face.textContent = flipped? c.back : front; face.style.color = flipped? 'var(--green)':'var(--text)'; });
+  $('prevBtn').addEventListener('click',()=>{ pos=(pos-1+deck.length)%deck.length; render(); });
+  $('nxtBtn').addEventListener('click',()=>{ pos=(pos+1)%deck.length; render(); });
+}
+
+document.addEventListener('keydown', e=>{
+  if(phase==='done') return;
+  const c = deck.length? CARDS[deck[pos]] : null; if(!c) return;
+  if(mode==='browse'){ if(e.code==='Space'){e.preventDefault(); $('flipCard').click();} if(e.key==='ArrowRight')$('nxtBtn').click(); if(e.key==='ArrowLeft')$('prevBtn').click(); return; }
+  if(c.type==='mc'){
+    if(phase==='question' && ['1','2','3','4'].includes(e.key)) choose(parseInt(e.key)-1);
+    else if(phase==='revealed' && (e.code==='Space'||e.key==='Enter')){ e.preventDefault(); next(); }
+  } else {
+    if(phase==='question' && e.code==='Space'){ e.preventDefault(); reveal(); }
+    else if(phase==='revealed'){ if(e.key.toLowerCase()==='g') selfGrade(true); if(e.key.toLowerCase()==='m') selfGrade(false); }
+  }
+});
+
+$('modeSel').addEventListener('change', ()=>restart());
+$('filterSel').addEventListener('change', ()=>restart());
+$('shuffleChk').addEventListener('change', ()=>restart());
+$('restartBtn').addEventListener('click', ()=>restart());
+
+restart();
+</script>
+</body>
+</html>
