@@ -114,6 +114,11 @@ h1{
 .choice.wrong{border-color:var(--red);background:linear-gradient(180deg,#451220,#330d18);}
 .choice.wrong .letter{background:var(--red);color:#fff;}
 .choice.dimmed{opacity:.25;}
+.choice.eliminated{opacity:.18;filter:grayscale(1);pointer-events:none;}
+.choice.eliminated::after{
+  content:'Eliminated'; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  border-radius:12px; background:rgba(5,2,18,.82); color:var(--muted); font-weight:900; letter-spacing:.12em; text-transform:uppercase;
+}
 .explain{
   margin-top:16px;background:rgba(77,195,255,.08);border-left:4px solid var(--blue);
   border-radius:0 12px 12px 0;padding:13px 15px;font-size:14px;line-height:1.55;animation:slideIn .4s ease both;
@@ -420,12 +425,22 @@ function startTimer(){
 function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML;}
 
 function useFifty(){
-  if(phase!=='question'||!lives.fifty) return;
+  const lifeButton=$('lifeFifty');
+  if(phase!=='question'||!lives.fifty||lifeButton.disabled) return;
   lives.fifty--; sClick();
   const c=CARDS[order[qi]];
-  const wrongs=shuffle([0,1,2,3].filter(i=>i!==c.answer)).slice(0,2);
-  wrongs.forEach(i=>{ const b=document.querySelector('.choice[data-i="'+i+'"]'); b.classList.add('dimmed'); b.disabled=true; });
-  $('lifeFifty').textContent='⚡ 50:50 ×'+lives.fifty; if(!lives.fifty)$('lifeFifty').disabled=true;
+  const wrongs=shuffle(Array.from(document.querySelectorAll('.choice'))
+    .filter(b=>parseInt(b.dataset.i)!==c.answer && !b.disabled)
+    .map(b=>parseInt(b.dataset.i)))
+    .slice(0,2);
+  wrongs.forEach(i=>{
+    const b=document.querySelector('.choice[data-i="'+i+'"]');
+    if(!b) return;
+    b.classList.add('dimmed','eliminated');
+    b.disabled=true;
+  });
+  lifeButton.textContent='⚡ 50:50 ×'+lives.fifty;
+  lifeButton.disabled=true;
 }
 function useSkip(){
   if(phase!=='question'||!lives.skip) return;
