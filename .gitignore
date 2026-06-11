@@ -1,0 +1,10 @@
+# Local agent worktrees (kept out of the repo they live inside)
+.claude/worktrees/
+
+# Browser-QA scratch output
+.playwright-mcp/
+verify-*.jpeg
+verify-*.png
+
+# Skill pipeline scratch (raw PDF extraction lands here before curation)
+/extract-tmp/
