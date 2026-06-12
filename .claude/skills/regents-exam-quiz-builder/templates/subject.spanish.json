@@ -1,0 +1,18 @@
+{
+  "_comment": "Base config for Comprehensive Examination in Spanish sessions. Per-session fields (eyebrow, qs_intro, fc_*) are filled by scripts/spanish_session_config.py — do not scaffold directly from this file.",
+  "site_name": "Regents Funzone",
+  "eyebrow": "{SESSION_LONG} Comprehensive Spanish Regents",
+  "qs_title": "⭐ ¡REGENTS RUSH! — The Comprehensive Spanish Quiz Show",
+  "qs_h1": "⭐ ¡Regents Rush! ⭐",
+  "qs_tagline": "The Comprehensive Spanish Regents Quiz Spectacular",
+  "qs_intro": "{MC} multiple-choice questions from the {SESSION_LONG} Comprehensive Spanish Regents — listening passages, readings, real ads &amp; notices, and cloze.<br>\n    Climb the money ladder to <b style=\"color:var(--gold)\">$1,000,000</b> · build 🔥 streaks for <b style=\"color:var(--gold)\">2× and 3× multipliers</b> · win trophies at 10, 20, 30 and {MC} correct.<br>\n    Real exam documents on screen — click any image to zoom. Two 50:50s and one Skip. 30–50 seconds a question. Keys 1–4 work.",
+  "qs_prizes": "\n  {at:10, emoji:'🥉', name:'EL TROFEO DE BRONCE', desc:'¡10 correct! ¡Fenomenal! The Bronze Trophy of the Bodega is YOURS!'},\n  {at:20, emoji:'🔔', name:'LA CAMPANA DE PLATA', desc:'¡20 correct! ¡Increíble! Ring the Silver Bell across the plaza!'},\n  {at:30, emoji:'☀️', name:'EL SOL DE ORO', desc:'¡30 correct! ¡Brillante! The Golden Sun shines on your Spanish!'},\n  {at:{MC}, emoji:'🏆', name:'LA CORONA DE PLATINO', desc:'¡A PERFECT {MC}/{MC}! ¡Campeón! La Corona de Platino crowns the master of the Comprehensive Spanish Regents!'}\n",
+  "qs_milestones": "9,19,29,{MC_MINUS_1}",
+  "index_blurb": "Practice with the quiz show, then drill the full deck with flashcards. The exam's listening passages, readings, ads, and pictures are built into every question.",
+  "fc_title": "Spanish Regents — {SESSION_SHORT} Flash Cards",
+  "fc_header": "Comprehensive Spanish Regents — {SESSION_SHORT}",
+  "fc_sub": "Flash cards · {TOTAL} cards from the exam",
+  "fc_all_opt": "All cards ({TOTAL})",
+  "fc_mc_opt": "Multiple choice only ({MC})",
+  "fc_free_opt": "Writing tasks only ({SELF})"
+}

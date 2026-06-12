@@ -345,7 +345,7 @@ function buildLadder(){
   const L=$('ladder'); L.innerHTML='';
   for(let i=0;i<order.length;i++){
     const d=document.createElement('div'); d.className='rung'; d.id='rung'+i;
-    if([6,13,20,27].includes(i)) d.classList.add('milestone');
+    if([{{QS_MILESTONES}}].includes(i)) d.classList.add('milestone');
     d.innerHTML='<span>Q'+(i+1)+'</span><b>'+fmt(LADDER[Math.min(i,LADDER.length-1)])+'</b>';
     L.appendChild(d);
   }

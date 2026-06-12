@@ -6,6 +6,8 @@
   "qs_tagline": "The U.S. History &amp; Government Quiz Spectacular",
   "qs_intro": "28 multiple-choice questions straight from the January 2026 U.S. History Regents.<br>\n    Climb the money ladder to <b style=\"color:var(--gold)\">$1,000,000</b> · build 🔥 streaks for <b style=\"color:var(--gold)\">2× and 3× multipliers</b> · win trophies at 7, 14, 21 and 28 correct.<br>\n    Real exam documents, photos &amp; cartoons on screen — click any image to zoom. Two 50:50s and one Skip. 30–50 seconds a question. Keys 1–4 work.",
   "qs_prizes": "\n  {at:7,  emoji:'🥉', name:'THE BRONZE GAVEL', desc:'7 correct! The Founding Fathers nod approvingly. The Bronze Gavel of Justice is YOURS!'},\n  {at:14, emoji:'🔔', name:'THE SILVER LIBERTY BELL', desc:'14 correct! Ring it loud — the Silver Liberty Bell joins your trophy case!'},\n  {at:21, emoji:'🦅', name:'THE GOLDEN EAGLE', desc:'21 correct! Soaring like Manifest Destiny itself — the Golden Eagle is YOURS!'},\n  {at:28, emoji:'🏆', name:'THE PLATINUM CONSTITUTION', desc:'A PERFECT 28/28! WE THE PEOPLE crown you champion — the Platinum Constitution trophy!'}\n",
+  "qs_milestones": "6,13,20,27",
+  "index_blurb": "Practice with the quiz show, then drill the full deck with flashcards. Source excerpts, maps, posters, and cartoons from the exam are included.",
   "fc_title": "USHG Regents — Jan 2026 Flash Cards",
   "fc_header": "U.S. History &amp; Government Regents — Jan 2026",
   "fc_sub": "Flash cards · 37 cards from the exam",
