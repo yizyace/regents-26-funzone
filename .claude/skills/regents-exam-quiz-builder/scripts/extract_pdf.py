@@ -15,6 +15,7 @@ Outputs (under DIR)
     text.txt          full text layer, one "===== PAGE n =====" banner per page
     raw/pNN-i.EXT     every embedded raster image, in PDF reading order
     render/pNN.png    page (or cropped region) renders requested via --render
+                      (2nd+ render of the same page gets a -2/-3/... suffix)
     manifest.json     per-page summary: text length, embedded images, renders
 
 --render SPEC
@@ -110,6 +111,7 @@ def main(argv=None):
     # requested renders (for vector figures)
     if args.render:
         (out / "render").mkdir(exist_ok=True)
+    seen_pages: dict[int, int] = {}
     for spec in args.render:
         page1, clip, scale = parse_render_spec(spec)
         page = doc[page1 - 1]
@@ -117,7 +119,9 @@ def main(argv=None):
         if clip:
             kw["clip"] = fitz.Rect(*clip)
         pix = page.get_pixmap(**kw)
-        name = f"render/p{page1:02d}.png"
+        seen_pages[page1] = seen_pages.get(page1, 0) + 1
+        nth = seen_pages[page1]
+        name = f"render/p{page1:02d}.png" if nth == 1 else f"render/p{page1:02d}-{nth}.png"
         pix.save(out / name)
         manifest["renders"].append({"file": name, "page": page1, "clip": clip, "scale": scale,
                                     "w": pix.width, "h": pix.height})

@@ -19,7 +19,9 @@ other sessions, or raw-docs. MuPDF "ICC profile" stderr noise is non-fatal — i
   (c) the four choices are PICTURES printed in the exam booklet.
 - **Part 3 Reading, Q16–30 (30 cr).** (a) long Spanish passage → Q16–20 (Spanish
   choices); (b) realia — ads, notices, schedules, labels → usually one document per
-  question (English choices); (c) cloze passage with numbered blanks → Q26–30.
+  question (English choices); (c) Q26–30: usually a cloze passage with numbered
+  blanks, but some admins print a second reading passage instead (e.g. Jun 2011) —
+  follow the printed exam, sharing one stimulus either way.
 - **Part 4 Writing (16 cr).** 2–4 prompts (notes/narratives/compositions, often
   pick-one options). Every distinct printed prompt becomes one `type:"self"` card.
 - Expect exactly **30 official MC (Q1–Q30)**. If the actual exam numbers differ,
@@ -103,6 +105,13 @@ never commit it.
   in source text (plain `$ 5.00` prices are fine).
 - Preserve Spanish orthography exactly: ¿ ¡ á é í ó ú ñ ü. If the text layer
   garbles a diacritic, fix it from the rendered page image.
+- Preserve the exam's printed typos verbatim (e.g. "albúm") — verify oddities
+  against a page render instead of "correcting" them.
+- S-cards follow the language of their section: stimuli from Part 2a / realia /
+  English-question passages get English stems+choices; stimuli from 2b / 3a
+  (Spanish-question sections) get Spanish stems+choices.
+- Multiple `--render` crops of the same page in one command get `-2`/`-3`
+  filename suffixes — check the script's printed output for the actual names.
 - Image files: `img/qNN-slug.ext`, NN = first question using it (`q01`, not `q1`).
 - Every `imgs` entry needs `src`, `cap` (caption incl. source), `alt` (screen-reader).
 - `stem` must start with the card's `label` + `". "`.
