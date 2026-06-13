@@ -423,8 +423,8 @@ const ALL_CARDS = [
         "improve his English before coming to the United States",
         "move permanently to the United States"
     ],
-    answer: 2,
-    back: "(3) improve his English before coming to the United States — official scoring key answer for June 22, 1999."
+    answer: 1,
+    back: "(2) study in the United States for one year — the letter thanks Mr. Woodard for helping Javier study grade 12 at his school next school year, with a visa to stay there \"durante un año.\""
   },
   { ...STIMULI.q24doc,
     type: "mc",
