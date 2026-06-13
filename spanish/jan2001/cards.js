@@ -11,7 +11,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 2001 Comprehensive Spanish Regents"
   },
   "l03": {
-    "passage": "[Background] While listening to the radio in Spain, you hear this announcement:\n\n[La maestra lee] La Radiotelevisión Española planea extender su señal por el sur de Estados\nUnidos. La Compañía de Radiotelevisión Española piensa llevar programas de\ncable a los estados de California, Nuevo México y Texas. También espera alcanzar\notro acuerdo que permitirá distribuir su programación por las redes de cable de\nFlorida. Esta señal internacional llegará a 800.000 hogares adicionales.\nWhat does the Spanish Radio-Television Network plan to do?\n[2]\ntwice in succession. Make every effort to read the passage in the way students would hear it in an authentic setting.",
+    "passage": "[Background] While listening to the radio in Spain, you hear this announcement:\n\n[La maestra lee] La Radiotelevisión Española planea extender su señal por el sur de Estados\nUnidos. La Compañía de Radiotelevisión Española piensa llevar programas de\ncable a los estados de California, Nuevo México y Texas. También espera alcanzar\notro acuerdo que permitirá distribuir su programación por las redes de cable de\nFlorida. Esta señal internacional llegará a 800.000 hogares adicionales.",
     "psource": "Teacher Dictation Copy, January 2001 Comprehensive Spanish Regents"
   },
   "l04": {
@@ -27,7 +27,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 2001 Comprehensive Spanish Regents"
   },
   "l07": {
-    "passage": "[Background] While listening to a Spanish-language radio station, you hear this news broadcast:\n\n[La maestra lee] La Administración municipal de Nueva York piensa autorizar a los taxis de la\nciudad a equiparse con teléfonos portátiles para el uso de los clientes. Los\nprimeros vehículos con teléfono, que permitirán hacer llamadas pero no recibirlas,\nfuncionarán este verano. Las empresas de taxi y las compañías telefónicas discuten\nlas condiciones del mantenimiento de los aparatos y las tarifas.\nWhat is this announcement about?\n[3]",
+    "passage": "[Background] While listening to a Spanish-language radio station, you hear this news broadcast:\n\n[La maestra lee] La Administración municipal de Nueva York piensa autorizar a los taxis de la\nciudad a equiparse con teléfonos portátiles para el uso de los clientes. Los\nprimeros vehículos con teléfono, que permitirán hacer llamadas pero no recibirlas,\nfuncionarán este verano. Las empresas de taxi y las compañías telefónicas discuten\nlas condiciones del mantenimiento de los aparatos y las tarifas.",
     "psource": "Teacher Dictation Copy, January 2001 Comprehensive Spanish Regents"
   },
   "l08": {
@@ -35,7 +35,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 2001 Comprehensive Spanish Regents"
   },
   "l09": {
-    "passage": "[Background] You are listening to the radio and hear this advertisement:\n\n[La maestra lee] La aerolínea española Iberia ahora ofrece un nuevo servicio a sus clientes, la\nventa de boletos electrónicos por la red mundial. Con este nuevo servicio, el\ncliente podrá hacer la reserva y pagar por su billete utilizando el ordenador. Usted\npuede pedir que le manden el boleto a su domicilio, o si prefiere, lo puede\nreclamar en el aeropuerto el día de su vuelo. Como siempre, Iberia está dispuesta\na mejorar sus servicios para complacer a sus clientes.\nWhat new service does this company now offer?\n[4]\n[5]\nAdminister Part 2b in the same manner as Part 2a.",
+    "passage": "[Background] You are listening to the radio and hear this advertisement:\n\n[La maestra lee] La aerolínea española Iberia ahora ofrece un nuevo servicio a sus clientes, la\nventa de boletos electrónicos por la red mundial. Con este nuevo servicio, el\ncliente podrá hacer la reserva y pagar por su billete utilizando el ordenador. Usted\npuede pedir que le manden el boleto a su domicilio, o si prefiere, lo puede\nreclamar en el aeropuerto el día de su vuelo. Como siempre, Iberia está dispuesta\na mejorar sus servicios para complacer a sus clientes.",
     "psource": "Teacher Dictation Copy, January 2001 Comprehensive Spanish Regents"
   },
   "l10": {
@@ -47,7 +47,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 2001 Comprehensive Spanish Regents"
   },
   "l12": {
-    "passage": "[Background] While listening to a Spanish radio station, you hear this commercial:\n\n[La maestra lee] La geometría de las caras humanas es muy variada. Así que tenemos caras\ncuadradas, caras redondas, triangulares, y hasta ovaladas. Esto importa a la hora de\nseleccionar las gafas. Existe una nueva línea de gafas tan individuales como cada\nconsumidor. Para la cara cuadrada, tienes marco de curva, la cara redonda necesita\nmonturas de línea recta o angular de color negro. Cada estilo nos hace ver mejor.\nEsta nueva línea también nos protege contra los rayos ultravioletas.\n¿Qué producto se anuncia?\nanswers are in Spanish. I will now begin.\n[6]",
+    "passage": "[Background] While listening to a Spanish radio station, you hear this commercial:\n\n[La maestra lee] La geometría de las caras humanas es muy variada. Así que tenemos caras\ncuadradas, caras redondas, triangulares, y hasta ovaladas. Esto importa a la hora de\nseleccionar las gafas. Existe una nueva línea de gafas tan individuales como cada\nconsumidor. Para la cara cuadrada, tienes marco de curva, la cara redonda necesita\nmonturas de línea recta o angular de color negro. Cada estilo nos hace ver mejor.\nEsta nueva línea también nos protege contra los rayos ultravioletas.",
     "psource": "Teacher Dictation Copy, January 2001 Comprehensive Spanish Regents"
   },
   "l13": {

@@ -11,7 +11,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 2000 Comprehensive Spanish Regents"
   },
   "l03": {
-    "passage": "[Background] You are listening to a radio program about tourism in Spain and hear this information:\n\n[La maestra lee] Ya está a la venta en kioscos por toda España. El libro de bolsillo más completo\nsobre establecimientos de las cuatro provincias gallegas: restaurantes, mesones,\nbodegones, casas tradicionales de comidas, hoteles, cafeterías, campings y\nalojamientos rurales. Contiene más de 1.000 fotografías a color. Además\nencontrará Ud. planos de las poblaciones más importantes. Hay una sección\ndedicada a informaciones complementarias: por ejemplo fiestas y ferias\ngastronómicas, vinos gallegos, etc. Busque Ud. la guía de la hostelería de Galicia.\nAccording to this program, what is now available for tourists?\n[2]\ntwice in succession. Make every effort to read the passage in the way students would hear it in an authentic setting.",
+    "passage": "[Background] You are listening to a radio program about tourism in Spain and hear this information:\n\n[La maestra lee] Ya está a la venta en kioscos por toda España. El libro de bolsillo más completo\nsobre establecimientos de las cuatro provincias gallegas: restaurantes, mesones,\nbodegones, casas tradicionales de comidas, hoteles, cafeterías, campings y\nalojamientos rurales. Contiene más de 1.000 fotografías a color. Además\nencontrará Ud. planos de las poblaciones más importantes. Hay una sección\ndedicada a informaciones complementarias: por ejemplo fiestas y ferias\ngastronómicas, vinos gallegos, etc. Busque Ud. la guía de la hostelería de Galicia.",
     "psource": "Teacher Dictation Copy, January 2000 Comprehensive Spanish Regents"
   },
   "l04": {
@@ -27,7 +27,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 2000 Comprehensive Spanish Regents"
   },
   "l07": {
-    "passage": "[Background] A friend is telling you about a new movie theater that has opened in Barcelona. Your\n\n[La maestra lee] friend says:\nAyer se inauguró en Barcelona un cine con una pantalla gigantesca. La sala de\ncine, situada en el puerto de Barcelona, ha costado 2.000 millones de pesetas. La\nsala proyectará películas OMNIMAX. En estas películas el tamaño de la imagen ha\nsido alterado. Ahora la pantalla de este cine es diez veces más grande que la de un\ncine convencional.\nWhat is a unique feature of this theater?\n[3]",
+    "passage": "[Background] A friend is telling you about a new movie theater that has opened in Barcelona. Your\n\n[La maestra lee] friend says:\nAyer se inauguró en Barcelona un cine con una pantalla gigantesca. La sala de\ncine, situada en el puerto de Barcelona, ha costado 2.000 millones de pesetas. La\nsala proyectará películas OMNIMAX. En estas películas el tamaño de la imagen ha\nsido alterado. Ahora la pantalla de este cine es diez veces más grande que la de un\ncine convencional.",
     "psource": "Teacher Dictation Copy, January 2000 Comprehensive Spanish Regents"
   },
   "l08": {
@@ -35,7 +35,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 2000 Comprehensive Spanish Regents"
   },
   "l09": {
-    "passage": "[Background] Before takeoff at the Juan Santamaria Airport in Costa Rica, the pilot makes this\n\n[La maestra lee] announcement:\n¡Señores pasajeros! Tengo que informarles que debido a un problema con el\ntransportador de equipaje, tenemos que desembarcar del avión en seguida. Un\nautobús les llevará a la terminal. Allá recibirán un cupón para el almuerzo gratis en\nla cafetería de la terminal. Esperamos embarcar el avión dentro de una hora y\nmedia. Sentimos mucho la demora y las molestias.\nWhat are passengers advised to do?\n[4]\n[5]\nAdminister Part 2b in the same manner as Part 2a.",
+    "passage": "[Background] Before takeoff at the Juan Santamaria Airport in Costa Rica, the pilot makes this\n\n[La maestra lee] announcement:\n¡Señores pasajeros! Tengo que informarles que debido a un problema con el\ntransportador de equipaje, tenemos que desembarcar del avión en seguida. Un\nautobús les llevará a la terminal. Allá recibirán un cupón para el almuerzo gratis en\nla cafetería de la terminal. Esperamos embarcar el avión dentro de una hora y\nmedia. Sentimos mucho la demora y las molestias.",
     "psource": "Teacher Dictation Copy, January 2000 Comprehensive Spanish Regents"
   },
   "l10": {
@@ -47,7 +47,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 2000 Comprehensive Spanish Regents"
   },
   "l12": {
-    "passage": "[Background] You are listening to a Spanish talk show and hear this advice for parents:\n\n[La maestra lee] De usted depende darle o no al niño algún dulce antes de irse a la cama para\nque duerma mejor. Científicamente no se ha probado que esto ayude al niño a\ndormir. Pero si desea hacerlo de todos modos, tenga presente las siguientes\nrecomendaciones:\nPrimero, no le sirva al niño nada que contenga cafeína, por ejemplo\nchocolates, galletitas de chocolate, té caliente o té frío, ni gaseosas.\nSegundo, no le dé demasiado líquido antes de dormir.\n¿Por qué se les da estos consejos a los padres?\nanswers are in Spanish. I will now begin.\n[6]",
+    "passage": "[Background] You are listening to a Spanish talk show and hear this advice for parents:\n\n[La maestra lee] De usted depende darle o no al niño algún dulce antes de irse a la cama para\nque duerma mejor. Científicamente no se ha probado que esto ayude al niño a\ndormir. Pero si desea hacerlo de todos modos, tenga presente las siguientes\nrecomendaciones:\nPrimero, no le sirva al niño nada que contenga cafeína, por ejemplo\nchocolates, galletitas de chocolate, té caliente o té frío, ni gaseosas.\nSegundo, no le dé demasiado líquido antes de dormir.",
     "psource": "Teacher Dictation Copy, January 2000 Comprehensive Spanish Regents"
   },
   "l13": {

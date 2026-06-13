@@ -15,7 +15,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 1999 Comprehensive Spanish Regents"
   },
   "l04": {
-    "passage": "[Background] When you arrive home from school, you hear your Spanish friend's message on your\n\n[La maestra lee] telephone answering machine:\nTe habla, Alicia. Lo siento, pero no fui a recoger el reloj como te prometí.\nEscucha. Es que esta mañana mi coche no funcionó y pasé todo el día con mi\npapá y el mecánico. ¡Qué horror! Ya llamé al joyero para decirle que no podía ir.\nLo siento mucho. ¡Llámame cuando regreses!\nWhat message did Alicia leave on the answering machine?\n[2]\ntwice in succession. Make every effort to read the passage in the way students would hear it in an authentic setting.",
+    "passage": "[Background] When you arrive home from school, you hear your Spanish friend's message on your\n\n[La maestra lee] telephone answering machine:\nTe habla, Alicia. Lo siento, pero no fui a recoger el reloj como te prometí.\nEscucha. Es que esta mañana mi coche no funcionó y pasé todo el día con mi\npapá y el mecánico. ¡Qué horror! Ya llamé al joyero para decirle que no podía ir.\nLo siento mucho. ¡Llámame cuando regreses!",
     "psource": "Teacher Dictation Copy, January 1999 Comprehensive Spanish Regents"
   },
   "l05": {
@@ -31,11 +31,11 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 1999 Comprehensive Spanish Regents"
   },
   "l08": {
-    "passage": "[Background] Your Spanish teacher is telling the class about an unusual \"festival\" in Spain. She says:\n\n[La maestra lee] En Buñol, un pequeño pueblo en el este de España, se celebra \"la tomatina\" el\núltimo miércoles de agosto. No es una fiesta religiosa, sino un corto tiempo de\ngozo en tirarse tomates. Camiones llenos de tomates bien maduros pasan por la\ncalle y reparten tomates a la gente, especialmente entre los chicos jóvenes. Con\nmucha risa, todos se tiran los tomates que vuelan por todas partes. \"La tomatina\"\ncomienza y termina según un horario estricto y con reglas de cuidado. Dos horas\ndespués de tirarse el último tomate, la calle está tan limpia como si nunca hubiera\nocurrido esta diversión.\nHow would visitors to this small village in Spain participate in its festival?\n[3]",
+    "passage": "[Background] Your Spanish teacher is telling the class about an unusual \"festival\" in Spain. She says:\n\n[La maestra lee] En Buñol, un pequeño pueblo en el este de España, se celebra \"la tomatina\" el\núltimo miércoles de agosto. No es una fiesta religiosa, sino un corto tiempo de\ngozo en tirarse tomates. Camiones llenos de tomates bien maduros pasan por la\ncalle y reparten tomates a la gente, especialmente entre los chicos jóvenes. Con\nmucha risa, todos se tiran los tomates que vuelan por todas partes. \"La tomatina\"\ncomienza y termina según un horario estricto y con reglas de cuidado. Dos horas\ndespués de tirarse el último tomate, la calle está tan limpia como si nunca hubiera\nocurrido esta diversión.",
     "psource": "Teacher Dictation Copy, January 1999 Comprehensive Spanish Regents"
   },
   "l09": {
-    "passage": "[Background] While shopping in a supermarket in Mexico, you hear this advertisement:\n\n[La maestra lee] \"Comebien\", una marca líder en Europa, garantiza que sus productos son\nsanos y mantienen el sabor original y la riqueza en nutrientes. Estos productos son\nnaturales y, además, protegen y cuidan el medio ambiente. Se nota que no utilizan\nlos elementos químicos que contaminan los alimentos y que destruyen la riqueza\nde la tierra.\nWhat new type of product is being made available to consumers?\n[4]\n[5]\nAdminister Part 2b in the same manner as Part 2a.",
+    "passage": "[Background] While shopping in a supermarket in Mexico, you hear this advertisement:\n\n[La maestra lee] \"Comebien\", una marca líder en Europa, garantiza que sus productos son\nsanos y mantienen el sabor original y la riqueza en nutrientes. Estos productos son\nnaturales y, además, protegen y cuidan el medio ambiente. Se nota que no utilizan\nlos elementos químicos que contaminan los alimentos y que destruyen la riqueza\nde la tierra.",
     "psource": "Teacher Dictation Copy, January 1999 Comprehensive Spanish Regents"
   },
   "l10": {
@@ -47,7 +47,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, January 1999 Comprehensive Spanish Regents"
   },
   "l12": {
-    "passage": "[Background] You are listening to the radio and hear this advertisement:\n\n[La maestra lee] Los largos viajes por carretera serán más agradables gracias al sistema\nmultimedia Clarión para el automóvil. Detrás del asiento del conductor se instala\nun televisor a color de 15 centímetros, con vídeo, para que los viajeros del coche\ndisfruten de los largos viajes. Por sólo 250.000 pesetas los viajeros pueden disfrutar\nde juegos en la televisión o ver sus películas favoritas.\n¿Qué beneficio ofrece el sistema Clarión?\nanswers are in Spanish. I will now begin.\n[6]",
+    "passage": "[Background] You are listening to the radio and hear this advertisement:\n\n[La maestra lee] Los largos viajes por carretera serán más agradables gracias al sistema\nmultimedia Clarión para el automóvil. Detrás del asiento del conductor se instala\nun televisor a color de 15 centímetros, con vídeo, para que los viajeros del coche\ndisfruten de los largos viajes. Por sólo 250.000 pesetas los viajeros pueden disfrutar\nde juegos en la televisión o ver sus películas favoritas.",
     "psource": "Teacher Dictation Copy, January 1999 Comprehensive Spanish Regents"
   },
   "l13": {

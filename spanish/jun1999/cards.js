@@ -11,7 +11,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, June 1999 Comprehensive Spanish Regents"
   },
   "l03": {
-    "passage": "[Background] You are listening to the radio and hear this report:\n\n[La maestra lee] Steven Fisher de los EEUU es especialista en lenguas del Pacífico. Es la\nprimera persona que ha podido interpretar la misteriosa escritura jeroglífica de la\nisla chilena de Pascua. El señor Fisher mostró el texto escrito sobre tabla de\nmadera. Esta escritura se basa en 120 pictogramas de criaturas y objetos. Cuando\nlos pictogramas y los objetos se combinan, forman glifos o inscripciones. El señor\nFisher pasó seis años visitando museos que poseen las tablas y descubrió la llave\nde los glifos en el Museo de Historia Natural de Santiago de Chile.\nWhat did Steven Fisher discover?\n[2]\ntwice in succession. Make every effort to read the passage in the way students would hear it in an authentic setting.",
+    "passage": "[Background] You are listening to the radio and hear this report:\n\n[La maestra lee] Steven Fisher de los EEUU es especialista en lenguas del Pacífico. Es la\nprimera persona que ha podido interpretar la misteriosa escritura jeroglífica de la\nisla chilena de Pascua. El señor Fisher mostró el texto escrito sobre tabla de\nmadera. Esta escritura se basa en 120 pictogramas de criaturas y objetos. Cuando\nlos pictogramas y los objetos se combinan, forman glifos o inscripciones. El señor\nFisher pasó seis años visitando museos que poseen las tablas y descubrió la llave\nde los glifos en el Museo de Historia Natural de Santiago de Chile.",
     "psource": "Teacher Dictation Copy, June 1999 Comprehensive Spanish Regents"
   },
   "l04": {
@@ -27,7 +27,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, June 1999 Comprehensive Spanish Regents"
   },
   "l07": {
-    "passage": "[Background] You are at a hotel in Madrid, Spain, and you overhear the desk clerk talking to a newly\n\n[La maestra lee] arrived tourist. The desk clerk says:\nSi Ud. desea cambiar sus dólares en pesetas lo puede realizar en muchos\nlugares. Los bancos están abiertos los días laborales de 8,30 a 14h., y los sábados\nde 9 a 13h. Casi todos los hoteles de 4 y 5 estrellas pueden cambiar su dinero\nigualmente que las agencias de viajes y los grandes almacenes. Si Ud. lo desea,\nnuestra caja aquí le puede ayudar con ese servicio. Estamos a sus órdenes.\nWhat does the desk clerk explain to the tourist?\n[3]",
+    "passage": "[Background] You are at a hotel in Madrid, Spain, and you overhear the desk clerk talking to a newly\n\n[La maestra lee] arrived tourist. The desk clerk says:\nSi Ud. desea cambiar sus dólares en pesetas lo puede realizar en muchos\nlugares. Los bancos están abiertos los días laborales de 8,30 a 14h., y los sábados\nde 9 a 13h. Casi todos los hoteles de 4 y 5 estrellas pueden cambiar su dinero\nigualmente que las agencias de viajes y los grandes almacenes. Si Ud. lo desea,\nnuestra caja aquí le puede ayudar con ese servicio. Estamos a sus órdenes.",
     "psource": "Teacher Dictation Copy, June 1999 Comprehensive Spanish Regents"
   },
   "l08": {
@@ -35,7 +35,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, June 1999 Comprehensive Spanish Regents"
   },
   "l09": {
-    "passage": "[Background] You are an exchange student in Spain. You hear a lecturer discuss the origin of chess.\n\n[La maestra lee] He says:\nEl juego de ajedrez nació en India en el siglo VI. Los jugadores usaban cuatro\npeones, un rey, un barco y un elefante. El juego tenía las mismas reglas que una\nverdadera batalla. El objetivo de esta competencia era capturar al rey. De la India\nel juego pasó a Persia y después a Arabia. Los árabes introdujeron el juego en\nÁfrica del Norte y en España. Desde España, pasó a Europa, donde el barco y el\nelefante fueron sustituidos por la torre y el caballo.\nAccording to this lecturer, where did the game of chess originate?\n[4]\n[5]\nAdminister Part 2b in the same manner as Part 2a.",
+    "passage": "[Background] You are an exchange student in Spain. You hear a lecturer discuss the origin of chess.\n\n[La maestra lee] He says:\nEl juego de ajedrez nació en India en el siglo VI. Los jugadores usaban cuatro\npeones, un rey, un barco y un elefante. El juego tenía las mismas reglas que una\nverdadera batalla. El objetivo de esta competencia era capturar al rey. De la India\nel juego pasó a Persia y después a Arabia. Los árabes introdujeron el juego en\nÁfrica del Norte y en España. Desde España, pasó a Europa, donde el barco y el\nelefante fueron sustituidos por la torre y el caballo.",
     "psource": "Teacher Dictation Copy, June 1999 Comprehensive Spanish Regents"
   },
   "l10": {
@@ -47,7 +47,7 @@ const STIMULI = {
     "psource": "Teacher Dictation Copy, June 1999 Comprehensive Spanish Regents"
   },
   "l12": {
-    "passage": "[Background] While touring Puerto Rico you hear this commentary by a tour guide:\n\n[La maestra lee] En todas las Antillas, pocas ciudades muestran las etapas de su historia tan\nclaramente como San Juan. A principios del siglo XVI, Juan Ponce de León\nestableció un pueblo que, en 1521, se convirtió en el Viejo San Juan. Hoy es uno\nde los mejores museos vivientes de arquitectura colonial, repleto de balcones de\nhierro y de calles de piedras. El fuerte de El Morro, al lado del mar, es un\nrecuerdo del pasado militar.\nA pocos pasos de la parte antigua de la ciudad brillan los hoteles modernos de\nla Playa del Condado. Hay numerosos casinos y espectáculos, y más allá, existen\nrascacielos y grandísimos centros comerciales en la parte nueva de la ciudad.\n¿Qué dice el guía de la ciudad de San Juan?\nanswers are in Spanish. I will now begin.\n[6]",
+    "passage": "[Background] While touring Puerto Rico you hear this commentary by a tour guide:\n\n[La maestra lee] En todas las Antillas, pocas ciudades muestran las etapas de su historia tan\nclaramente como San Juan. A principios del siglo XVI, Juan Ponce de León\nestableció un pueblo que, en 1521, se convirtió en el Viejo San Juan. Hoy es uno\nde los mejores museos vivientes de arquitectura colonial, repleto de balcones de\nhierro y de calles de piedras. El fuerte de El Morro, al lado del mar, es un\nrecuerdo del pasado militar.\nA pocos pasos de la parte antigua de la ciudad brillan los hoteles modernos de\nla Playa del Condado. Hay numerosos casinos y espectáculos, y más allá, existen\nrascacielos y grandísimos centros comerciales en la parte nueva de la ciudad.",
     "psource": "Teacher Dictation Copy, June 1999 Comprehensive Spanish Regents"
   },
   "l13": {
