@@ -1,0 +1,842 @@
+[
+ {
+  "session": "jan1998",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19980128exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan1998/exam.pdf",
+  "sha256": "e2a10f8be3f48442",
+  "bytes": 938539,
+  "pages": 23,
+  "text_chars": 0
+ },
+ {
+  "session": "jan1998",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19980128teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan1998/tdc.pdf",
+  "sha256": "e961de4b4f9f8d38",
+  "bytes": 50943,
+  "pages": 8,
+  "text_chars": 11329
+ },
+ {
+  "session": "jan1998",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19980128scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan1998/key.pdf",
+  "sha256": "70b33a3e9ade0f61",
+  "bytes": 164819,
+  "pages": 4,
+  "text_chars": 0
+ },
+ {
+  "session": "jun1998",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19980618exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun1998/exam.pdf",
+  "sha256": "ac124579ab5af25a",
+  "bytes": 898092,
+  "pages": 23,
+  "text_chars": 0
+ },
+ {
+  "session": "jun1998",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19980618teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun1998/tdc.pdf",
+  "sha256": "b25022edb9aa7765",
+  "bytes": 51223,
+  "pages": 8,
+  "text_chars": 10548
+ },
+ {
+  "session": "jun1998",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19980618scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun1998/key.pdf",
+  "sha256": "8eb1afe08ce93d8b",
+  "bytes": 168296,
+  "pages": 4,
+  "text_chars": 0
+ },
+ {
+  "session": "jan1999",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19990127exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan1999/exam.pdf",
+  "sha256": "bfdcc6ba255c167f",
+  "bytes": 1475045,
+  "pages": 21,
+  "text_chars": 0
+ },
+ {
+  "session": "jan1999",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19990127teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan1999/tdc.pdf",
+  "sha256": "bb76e18c33595106",
+  "bytes": 51954,
+  "pages": 8,
+  "text_chars": 10763
+ },
+ {
+  "session": "jan1999",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19990127scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan1999/key.pdf",
+  "sha256": "1ae6763d733563db",
+  "bytes": 268766,
+  "pages": 4,
+  "text_chars": 0
+ },
+ {
+  "session": "jun1999",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19990622exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun1999/exam.pdf",
+  "sha256": "c0c404809804df4f",
+  "bytes": 1699317,
+  "pages": 28,
+  "text_chars": 0
+ },
+ {
+  "session": "jun1999",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19990622teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun1999/tdc.pdf",
+  "sha256": "cd75934da8f845f3",
+  "bytes": 51226,
+  "pages": 8,
+  "text_chars": 11082
+ },
+ {
+  "session": "jun1999",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/19990622scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun1999/key.pdf",
+  "sha256": "c9a46340ccb7e60f",
+  "bytes": 275164,
+  "pages": 4,
+  "text_chars": 0
+ },
+ {
+  "session": "jan2000",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20000127exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2000/exam.pdf",
+  "sha256": "fa2c6d1e8bcf7a61",
+  "bytes": 1417052,
+  "pages": 24,
+  "text_chars": 0
+ },
+ {
+  "session": "jan2000",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20000127teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2000/tdc.pdf",
+  "sha256": "569aa1513039e59b",
+  "bytes": 51490,
+  "pages": 8,
+  "text_chars": 11161
+ },
+ {
+  "session": "jan2000",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20000127scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2000/key.pdf",
+  "sha256": "537a5f11e7f7ebdc",
+  "bytes": 285557,
+  "pages": 4,
+  "text_chars": 0
+ },
+ {
+  "session": "jun2000",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20000620exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2000/exam.pdf",
+  "sha256": "2ca9347ff72a5bed",
+  "bytes": 274887,
+  "pages": 15,
+  "text_chars": 25946
+ },
+ {
+  "session": "jun2000",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20000620teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2000/tdc.pdf",
+  "sha256": "26188e6e30c7d013",
+  "bytes": 51128,
+  "pages": 8,
+  "text_chars": 10902
+ },
+ {
+  "session": "jun2000",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20000620scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2000/key.pdf",
+  "sha256": "b5bf6498edb11731",
+  "bytes": 37364,
+  "pages": 4,
+  "text_chars": 7171
+ },
+ {
+  "session": "jan2001",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20010125exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2001/exam.pdf",
+  "sha256": "6f919251255aa45b",
+  "bytes": 1521275,
+  "pages": 16,
+  "text_chars": 28657
+ },
+ {
+  "session": "jan2001",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20010125teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2001/tdc.pdf",
+  "sha256": "2b3c1067f9683eff",
+  "bytes": 51296,
+  "pages": 8,
+  "text_chars": 11222
+ },
+ {
+  "session": "jan2001",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20010125scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2001/key.pdf",
+  "sha256": "c8e4f5d826bfb35a",
+  "bytes": 38492,
+  "pages": 4,
+  "text_chars": 7267
+ },
+ {
+  "session": "jun2001",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20010619exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2001/exam.pdf",
+  "sha256": "003edc7d4644d465",
+  "bytes": 98837,
+  "pages": 16,
+  "text_chars": 28603
+ },
+ {
+  "session": "jun2001",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20010619teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2001/tdc.pdf",
+  "sha256": "03f4c33bc87730cc",
+  "bytes": 22363,
+  "pages": 6,
+  "text_chars": 11439
+ },
+ {
+  "session": "jun2001",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20010619scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2001/key.pdf",
+  "sha256": "a77256387c64094a",
+  "bytes": 19430,
+  "pages": 4,
+  "text_chars": 7458
+ },
+ {
+  "session": "jan2002",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20020124exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2002/exam.pdf",
+  "sha256": "1cbcc0f74ce7210d",
+  "bytes": 186983,
+  "pages": 12,
+  "text_chars": 17803
+ },
+ {
+  "session": "jan2002",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20020124teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2002/tdc.pdf",
+  "sha256": "9ad96a202b2e81f8",
+  "bytes": 40146,
+  "pages": 6,
+  "text_chars": 11237
+ },
+ {
+  "session": "jan2002",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/Spanish/Archive/20020124scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2002/key.pdf",
+  "sha256": "363e68a2ca4bf375",
+  "bytes": 38174,
+  "pages": 4,
+  "text_chars": 7794
+ },
+ {
+  "session": "jun2002",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20020621exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2002/exam.pdf",
+  "sha256": "8decf3d751bccd8b",
+  "bytes": 93131,
+  "pages": 11,
+  "text_chars": 20470
+ },
+ {
+  "session": "jun2002",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20020621teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2002/tdc.pdf",
+  "sha256": "3799bea43e9c1279",
+  "bytes": 40172,
+  "pages": 6,
+  "text_chars": 10529
+ },
+ {
+  "session": "jan2003",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20030128exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2003/exam.pdf",
+  "sha256": "ff20b175a9d99b9b",
+  "bytes": 188393,
+  "pages": 12,
+  "text_chars": 20489
+ },
+ {
+  "session": "jan2003",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20030128teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2003/tdc.pdf",
+  "sha256": "ffe5b78f99a90641",
+  "bytes": 51326,
+  "pages": 8,
+  "text_chars": 10803
+ },
+ {
+  "session": "jan2003",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20030128scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2003/key.pdf",
+  "sha256": "f36dc3dd7048dd55",
+  "bytes": 61139,
+  "pages": 4,
+  "text_chars": 7923
+ },
+ {
+  "session": "jun2003",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20030620exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2003/exam.pdf",
+  "sha256": "19512b324a5283e2",
+  "bytes": 236611,
+  "pages": 12,
+  "text_chars": 22064
+ },
+ {
+  "session": "jun2003",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20030620teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2003/tdc.pdf",
+  "sha256": "7aa82040537258fb",
+  "bytes": 53307,
+  "pages": 8,
+  "text_chars": 11697
+ },
+ {
+  "session": "jun2003",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20030620scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2003/key.pdf",
+  "sha256": "5978c6240718e181",
+  "bytes": 82853,
+  "pages": 8,
+  "text_chars": 12717
+ },
+ {
+  "session": "jan2004",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20040127exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2004/exam.pdf",
+  "sha256": "3e55e3825e46cff3",
+  "bytes": 453293,
+  "pages": 12,
+  "text_chars": 20995
+ },
+ {
+  "session": "jan2004",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20040127teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2004/tdc.pdf",
+  "sha256": "a92ca0abc070c38f",
+  "bytes": 52266,
+  "pages": 8,
+  "text_chars": 12403
+ },
+ {
+  "session": "jan2004",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20040127scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2004/key.pdf",
+  "sha256": "97474ef84e359142",
+  "bytes": 83625,
+  "pages": 8,
+  "text_chars": 12976
+ },
+ {
+  "session": "jun2004",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20040622exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2004/exam.pdf",
+  "sha256": "c13c0bfcbafa890c",
+  "bytes": 1385103,
+  "pages": 16,
+  "text_chars": 22076
+ },
+ {
+  "session": "jun2004",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20040622teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2004/tdc.pdf",
+  "sha256": "59298810a6f1c979",
+  "bytes": 51527,
+  "pages": 8,
+  "text_chars": 11531
+ },
+ {
+  "session": "jun2004",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20040622scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2004/key.pdf",
+  "sha256": "e6a6cc1bd0e6348f",
+  "bytes": 83049,
+  "pages": 8,
+  "text_chars": 13587
+ },
+ {
+  "session": "jan2005",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20050126exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2005/exam.pdf",
+  "sha256": "dfd46e49826a10c9",
+  "bytes": 161130,
+  "pages": 16,
+  "text_chars": 19041
+ },
+ {
+  "session": "jan2005",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20050126teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2005/tdc.pdf",
+  "sha256": "dac2c021c2cca3cc",
+  "bytes": 50670,
+  "pages": 8,
+  "text_chars": 11641
+ },
+ {
+  "session": "jan2005",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20050126scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2005/key.pdf",
+  "sha256": "db1fb0e6d29bce56",
+  "bytes": 83085,
+  "pages": 8,
+  "text_chars": 13530
+ },
+ {
+  "session": "jun2005",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20050617exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2005/exam.pdf",
+  "sha256": "9f76114fa04ce337",
+  "bytes": 166574,
+  "pages": 16,
+  "text_chars": 22381
+ },
+ {
+  "session": "jun2005",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20050617teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2005/tdc.pdf",
+  "sha256": "dd432b772fbe8022",
+  "bytes": 51251,
+  "pages": 8,
+  "text_chars": 12078
+ },
+ {
+  "session": "jun2005",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20050617scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2005/key.pdf",
+  "sha256": "f5a611824c288922",
+  "bytes": 82561,
+  "pages": 8,
+  "text_chars": 13313
+ },
+ {
+  "session": "jan2006",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20060125exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2006/exam.pdf",
+  "sha256": "38c2abaed0aefffb",
+  "bytes": 339626,
+  "pages": 12,
+  "text_chars": 22267
+ },
+ {
+  "session": "jan2006",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20060125teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2006/tdc.pdf",
+  "sha256": "7d7306b66d1892ce",
+  "bytes": 53494,
+  "pages": 8,
+  "text_chars": 10931
+ },
+ {
+  "session": "jan2006",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20060125scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2006/key.pdf",
+  "sha256": "91c9f4b723d052e0",
+  "bytes": 83306,
+  "pages": 8,
+  "text_chars": 13569
+ },
+ {
+  "session": "jun2006",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20060616exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2006/exam.pdf",
+  "sha256": "3664ef5d9d3ba745",
+  "bytes": 1013922,
+  "pages": 12,
+  "text_chars": 22806
+ },
+ {
+  "session": "jun2006",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20060616teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2006/tdc.pdf",
+  "sha256": "052fab7f4fcbb408",
+  "bytes": 45032,
+  "pages": 8,
+  "text_chars": 11850
+ },
+ {
+  "session": "jun2006",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20060616scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2006/key.pdf",
+  "sha256": "b4866b33c6901563",
+  "bytes": 58825,
+  "pages": 8,
+  "text_chars": 14261
+ },
+ {
+  "session": "jan2007",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20070114exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2007/exam.pdf",
+  "sha256": "2c8e7362b797681c",
+  "bytes": 783191,
+  "pages": 12,
+  "text_chars": 21722
+ },
+ {
+  "session": "jan2007",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20070114teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2007/tdc.pdf",
+  "sha256": "d5527a74a8dfe7b8",
+  "bytes": 46092,
+  "pages": 8,
+  "text_chars": 11268
+ },
+ {
+  "session": "jan2007",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20070114scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2007/key.pdf",
+  "sha256": "b236e01d66b643af",
+  "bytes": 58713,
+  "pages": 8,
+  "text_chars": 14310
+ },
+ {
+  "session": "jun2007",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20070615exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2007/exam.pdf",
+  "sha256": "4e0fb23259338708",
+  "bytes": 1229845,
+  "pages": 16,
+  "text_chars": 20092
+ },
+ {
+  "session": "jun2007",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20070615teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2007/tdc.pdf",
+  "sha256": "8b6e35c12a503bec",
+  "bytes": 254356,
+  "pages": 8,
+  "text_chars": 11150
+ },
+ {
+  "session": "jun2007",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20070615scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2007/key.pdf",
+  "sha256": "89d23139f006de3b",
+  "bytes": 346879,
+  "pages": 8,
+  "text_chars": 14771
+ },
+ {
+  "session": "jan2008",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20080123exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2008/exam.pdf",
+  "sha256": "f5348e2936543b72",
+  "bytes": 561875,
+  "pages": 16,
+  "text_chars": 23451
+ },
+ {
+  "session": "jan2008",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20080123teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2008/tdc.pdf",
+  "sha256": "5ae506779c281eb2",
+  "bytes": 45627,
+  "pages": 8,
+  "text_chars": 11627
+ },
+ {
+  "session": "jan2008",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20080123scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2008/key.pdf",
+  "sha256": "9e28ad9dfc680520",
+  "bytes": 58970,
+  "pages": 8,
+  "text_chars": 14603
+ },
+ {
+  "session": "jun2008",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20080624exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2008/exam.pdf",
+  "sha256": "09498271d2d28ea5",
+  "bytes": 1517834,
+  "pages": 16,
+  "text_chars": 25376
+ },
+ {
+  "session": "jun2008",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20080624teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2008/tdc.pdf",
+  "sha256": "9c9281eb621bb02f",
+  "bytes": 48147,
+  "pages": 8,
+  "text_chars": 11005
+ },
+ {
+  "session": "jun2008",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20080624scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2008/key.pdf",
+  "sha256": "690c63e25bf3760f",
+  "bytes": 59584,
+  "pages": 8,
+  "text_chars": 14086
+ },
+ {
+  "session": "jan2009",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20090128exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2009/exam.pdf",
+  "sha256": "768f59e5dc301fd3",
+  "bytes": 304790,
+  "pages": 16,
+  "text_chars": 21945
+ },
+ {
+  "session": "jan2009",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20090128teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2009/tdc.pdf",
+  "sha256": "946b7c8d16d39dd4",
+  "bytes": 47376,
+  "pages": 8,
+  "text_chars": 11809
+ },
+ {
+  "session": "jan2009",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20090128scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2009/key.pdf",
+  "sha256": "0992347d9d137336",
+  "bytes": 57455,
+  "pages": 8,
+  "text_chars": 14232
+ },
+ {
+  "session": "jun2009",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20090623exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2009/exam.pdf",
+  "sha256": "4420ba5187ca578b",
+  "bytes": 208468,
+  "pages": 16,
+  "text_chars": 23288
+ },
+ {
+  "session": "jun2009",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20090623teacherdictation.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2009/tdc.pdf",
+  "sha256": "5f63a4e3bf005c2c",
+  "bytes": 47778,
+  "pages": 8,
+  "text_chars": 12094
+ },
+ {
+  "session": "jun2009",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20090623scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2009/key.pdf",
+  "sha256": "a19252c9c233e638",
+  "bytes": 59321,
+  "pages": 8,
+  "text_chars": 14086
+ },
+ {
+  "session": "jan2010",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20100127exam.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2010/exam.pdf",
+  "sha256": "8e5bd17f6ccc13ee",
+  "bytes": 611798,
+  "pages": 16,
+  "text_chars": 22792
+ },
+ {
+  "session": "jan2010",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20100127tdc.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2010/tdc.pdf",
+  "sha256": "23494d8294283c2f",
+  "bytes": 45283,
+  "pages": 8,
+  "text_chars": 12124
+ },
+ {
+  "session": "jan2010",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20100127scoringkey.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2010/key.pdf",
+  "sha256": "9c7abc562a965c78",
+  "bytes": 58951,
+  "pages": 8,
+  "text_chars": 14334
+ },
+ {
+  "session": "jun2010",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/20100622examsp.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2010/exam.pdf",
+  "sha256": "660df8208b675de0",
+  "bytes": 542139,
+  "pages": 16,
+  "text_chars": 23325
+ },
+ {
+  "session": "jun2010",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/20100622tdcsp.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2010/tdc.pdf",
+  "sha256": "6b21aafb6301b494",
+  "bytes": 47545,
+  "pages": 8,
+  "text_chars": 11030
+ },
+ {
+  "session": "jun2010",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20100622rgsp.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2010/key.pdf",
+  "sha256": "912ab4c4eba285bc",
+  "bytes": 60202,
+  "pages": 8,
+  "text_chars": 14527
+ },
+ {
+  "session": "jan2011",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/111/sp-exam-111w.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2011/exam.pdf",
+  "sha256": "9dfe6f3773429d37",
+  "bytes": 328996,
+  "pages": 12,
+  "text_chars": 21483
+ },
+ {
+  "session": "jan2011",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/111/sp-tdc-111.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2011/tdc.pdf",
+  "sha256": "dacc24050eca77c7",
+  "bytes": 49338,
+  "pages": 8,
+  "text_chars": 11508
+ },
+ {
+  "session": "jan2011",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/20110126-sp-rg.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jan2011/key.pdf",
+  "sha256": "461b0915392e080a",
+  "bytes": 58084,
+  "pages": 6,
+  "text_chars": 14215
+ },
+ {
+  "session": "jun2011",
+  "kind": "exam",
+  "url": "https://www.nysedregents.org/spanish/611/sp-exam611w.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2011/exam.pdf",
+  "sha256": "7fd08a3548ce641b",
+  "bytes": 147677,
+  "pages": 12,
+  "text_chars": 21878
+ },
+ {
+  "session": "jun2011",
+  "kind": "tdc",
+  "url": "https://www.nysedregents.org/spanish/611/sp-tdc611w.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2011/tdc.pdf",
+  "sha256": "498d3ea7bbf9475a",
+  "bytes": 42905,
+  "pages": 8,
+  "text_chars": 10772
+ },
+ {
+  "session": "jun2011",
+  "kind": "key",
+  "url": "https://www.nysedregents.org/spanish/611/compspanish-rg611.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2011/key.pdf",
+  "sha256": "ec4e577dfb1cbb2d",
+  "bytes": 58904,
+  "pages": 6,
+  "text_chars": 14692
+ },
+ {
+  "session": "jun2002",
+  "kind": "key",
+  "url": "http://web.archive.org/web/20040708174612if_/http://www.nysedregents.org:80/testing/lotegre/lotearch/compspanscorju02pdf.pdf",
+  "path": "raw-docs/nysedregents.org/spanish/jun2002/key.pdf",
+  "sha256": "7af8cebd171f4d2e",
+  "bytes": 38487,
+  "pages": 3,
+  "text_chars": 7601
+ }
+]

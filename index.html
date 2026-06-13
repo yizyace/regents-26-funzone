@@ -28,11 +28,11 @@
     padding:24px;
   }
   main{
-    width:min(920px,100%);
+    width:min(1100px,100%);
     background:var(--panel);
     border:3px solid rgba(24,15,8,.18);
     border-radius:28px;
-    padding:clamp(28px,6vw,62px);
+    padding:clamp(28px,5vw,56px);
     box-shadow:0 24px 70px rgba(85,43,8,.22);
     position:relative;
     overflow:hidden;
@@ -52,98 +52,167 @@
     text-transform:uppercase;
   }
   h1{
-    font-size:clamp(42px,9vw,92px);
+    font-size:clamp(42px,9vw,84px);
     line-height:.9;
     margin:12px 0 18px;
     max-width:780px;
   }
-  p{
-    font-size:clamp(18px,2.2vw,23px);
+  p.lead{
+    font-size:clamp(17px,2.1vw,22px);
     line-height:1.45;
-    max-width:680px;
-    margin:0 0 30px;
+    max-width:720px;
+    margin:0 0 18px;
   }
-  .actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:14px;
-    position:relative;
-    z-index:1;
-  }
-  a{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-height:58px;
-    padding:0 24px;
-    border-radius:999px;
-    color:var(--ink);
-    text-decoration:none;
-    font:900 15px/1 system-ui,sans-serif;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    border:2px solid rgba(24,15,8,.25);
-    background:#fff;
-    box-shadow:0 8px 0 rgba(24,15,8,.18);
-    transition:transform .15s, box-shadow .15s;
-  }
-  a:hover{
-    transform:translateY(-3px);
-    box-shadow:0 11px 0 rgba(24,15,8,.18);
-  }
-  a.primary{
-    background:linear-gradient(180deg,var(--gold),var(--orange));
-  }
-  .session{
+  .subject{
     position:relative;
     z-index:1;
     margin-top:26px;
     padding-top:22px;
     border-top:2px dashed rgba(24,15,8,.18);
   }
-  .session h2{
-    margin:0 0 14px;
-    font-size:clamp(22px,3.4vw,30px);
+  .subject h2{
+    margin:0 0 16px;
+    font-size:clamp(22px,3.2vw,30px);
     display:flex;
     align-items:baseline;
     gap:12px;
     flex-wrap:wrap;
   }
-  .session h2 .tag{
+  .subject h2 .count{
     font:700 12px/1 system-ui,sans-serif;
     letter-spacing:.14em;
     text-transform:uppercase;
     color:var(--blue);
   }
+  .sess-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+    gap:14px;
+  }
+  .sess-card{
+    background:#fff;
+    border:2px solid rgba(24,15,8,.16);
+    border-radius:16px;
+    padding:14px 16px;
+    box-shadow:0 6px 0 rgba(24,15,8,.10);
+  }
+  .sess-card h3{
+    margin:0 0 2px;
+    font-size:19px;
+  }
+  .sess-card .tag{
+    display:block;
+    font:700 11px/1.3 system-ui,sans-serif;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--blue);
+    margin-bottom:10px;
+  }
+  .sess-card .links{
+    display:flex;
+    gap:8px;
+  }
+  .sess-card a{
+    flex:1;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:38px;
+    padding:0 10px;
+    border-radius:999px;
+    color:var(--ink);
+    text-decoration:none;
+    font:900 11px/1 system-ui,sans-serif;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    border:2px solid rgba(24,15,8,.22);
+    background:#fff;
+    transition:transform .12s, box-shadow .12s;
+  }
+  .sess-card a:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 0 rgba(24,15,8,.16);
+  }
+  .sess-card a.primary{
+    background:linear-gradient(180deg,var(--gold),var(--orange));
+  }
 </style>
 </head>
 <body>
   <main>
-    <div class="eyebrow">U.S. History &amp; Government Regents</div>
+    <div class="eyebrow">New York State Regents</div>
     <h1>Regents Funzone</h1>
-    <p>Pick an exam, climb the money ladder in the quiz show, then drill the full deck with flashcards. Real exam documents — maps, posters, cartoons, and charts — are built into every question.</p>
+    <p class="lead">Pick an exam, climb the money ladder in the quiz show, then drill the full deck with flashcards. Real exam documents — listening passages, readings, ads, maps, posters, and cartoons — are built into every question.</p>
 
-    <div id="sessions"></div>
+    <div id="subjects"></div>
   </main>
   <script>
-    // Each Regents administration is one entry. dir "" = the root deck; subdir sessions prefix their folder.
-    const SESSIONS = [
-      { dir: "",         title: "January 2026", tag: "28 MC · 37 cards" },
-      { dir: "aug2025/", title: "August 2025",  tag: "28 MC · 37 cards" },
-      { dir: "jun2025/", title: "June 2025",    tag: "28 MC · 37 cards" },
-      { dir: "jan2025/", title: "January 2025", tag: "28 MC · 37 cards" },
-      { dir: "aug2024/", title: "August 2024",  tag: "28 MC · 37 cards" },
-      { dir: "jun2024/", title: "June 2024",    tag: "28 MC · 37 cards" },
-      { dir: "jan2024/", title: "January 2024", tag: "28 MC · 37 cards" },
-      { dir: "aug2023/", title: "August 2023",  tag: "28 MC · 37 cards" },
-      { dir: "jun2023/", title: "June 2023",    tag: "28 MC · 37 cards" },
+    // Each subject groups its administrations. dir "" = the root deck (U.S. History
+    // Jan 2026); every other session prefixes its own folder. Adding a session is a
+    // one-line append to the right subject's `sessions` array.
+    const SUBJECTS = [
+      {
+        subject: "U.S. History & Government",
+        sessions: [
+          { dir: "",         title: "Jan 2026", tag: "28 MC · 37 cards" },
+          { dir: "aug2025/", title: "Aug 2025", tag: "28 MC · 37 cards" },
+          { dir: "jun2025/", title: "Jun 2025", tag: "28 MC · 37 cards" },
+          { dir: "jan2025/", title: "Jan 2025", tag: "28 MC · 37 cards" },
+          { dir: "aug2024/", title: "Aug 2024", tag: "28 MC · 37 cards" },
+          { dir: "jun2024/", title: "Jun 2024", tag: "28 MC · 37 cards" },
+          { dir: "jan2024/", title: "Jan 2024", tag: "28 MC · 37 cards" },
+          { dir: "aug2023/", title: "Aug 2023", tag: "28 MC · 37 cards" },
+          { dir: "jun2023/", title: "Jun 2023", tag: "28 MC · 37 cards" },
+        ]
+      },
+      {
+        subject: "Comprehensive Spanish",
+        sessions: [
+          { dir: "spanish/jun2011/", title: "Jun 2011", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2011/", title: "Jan 2011", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jun2010/", title: "Jun 2010", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2010/", title: "Jan 2010", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jun2009/", title: "Jun 2009", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2009/", title: "Jan 2009", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jun2008/", title: "Jun 2008", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2008/", title: "Jan 2008", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jun2007/", title: "Jun 2007", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2007/", title: "Jan 2007", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jun2006/", title: "Jun 2006", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2006/", title: "Jan 2006", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jun2005/", title: "Jun 2005", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2005/", title: "Jan 2005", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jun2004/", title: "Jun 2004", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2004/", title: "Jan 2004", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jun2003/", title: "Jun 2003", tag: "40 MC · 43 cards" },
+          { dir: "spanish/jan2003/", title: "Jan 2003", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jun2002/", title: "Jun 2002", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jan2002/", title: "Jan 2002", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jun2001/", title: "Jun 2001", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jan2001/", title: "Jan 2001", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jun2000/", title: "Jun 2000", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jan2000/", title: "Jan 2000", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jun1999/", title: "Jun 1999", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jan1999/", title: "Jan 1999", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jun1998/", title: "Jun 1998", tag: "40 MC · 44 cards" },
+          { dir: "spanish/jan1998/", title: "Jan 1998", tag: "40 MC · 44 cards" },
+        ]
+      },
     ];
-    document.getElementById("sessions").innerHTML = SESSIONS.map(s => `
-    <section class="session">
-      <h2>${s.title} <span class="tag">${s.tag}</span></h2>
-      <div class="actions">
-        <a class="primary" href="${s.dir}quizshow.html">Quiz Show</a>
-        <a href="${s.dir}flashcards.html">Flashcards</a>
+
+    document.getElementById("subjects").innerHTML = SUBJECTS.map(sub => `
+    <section class="subject">
+      <h2>${sub.subject} <span class="count">${sub.sessions.length} exam${sub.sessions.length === 1 ? "" : "s"}</span></h2>
+      <div class="sess-grid">
+        ${sub.sessions.map(s => `
+        <div class="sess-card">
+          <h3>${s.title}</h3>
+          <span class="tag">${s.tag}</span>
+          <div class="links">
+            <a class="primary" href="${s.dir}quizshow.html">Quiz</a>
+            <a href="${s.dir}flashcards.html">Cards</a>
+          </div>
+        </div>`).join("")}
       </div>
     </section>`).join("");
   </script>

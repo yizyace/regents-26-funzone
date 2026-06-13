@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spanish Regents — Jan 2000 Flash Cards</title>
+<style>
+  :root{
+    --bg:#0f1117; --panel:#181b25; --panel2:#1f2330; --text:#e8eaf2; --muted:#9aa0b4;
+    --accent:#5b8def; --green:#3ec97e; --red:#e8596a; --amber:#e8b339; --border:#2a2f40;
+    --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--bg); color:var(--text); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center;}
+  header{width:100%; max-width:880px; padding:20px 16px 8px; display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;}
+  h1{font-size:18px; font-weight:700;}
+  h1 span{color:var(--muted); font-weight:500; font-size:13px; display:block;}
+  .chips{display:flex; gap:8px; flex-wrap:wrap;}
+  .chip{background:var(--panel); border:1px solid var(--border); border-radius:999px; padding:6px 14px; font-size:13px; color:var(--muted);}
+  .chip b{color:var(--text);}
+  .chip.good b{color:var(--green);} .chip.bad b{color:var(--red);}
+  .controls{width:100%; max-width:880px; padding:4px 16px 12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  select,button{font:inherit;}
+  select{background:var(--panel); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:7px 10px; font-size:13px;}
+  .btn{background:var(--panel); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:7px 14px; font-size:13px; cursor:pointer; transition:background .15s;}
+  .btn:hover{background:var(--panel2);}
+  .btn.primary{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600;}
+  .btn.primary:hover{filter:brightness(1.1);}
+  .progressbar{width:100%; max-width:880px; padding:0 16px;}
+  .progressbar .track{height:6px; background:var(--panel); border-radius:99px; overflow:hidden;}
+  .progressbar .fill{height:100%; background:var(--accent); width:0%; transition:width .25s;}
+  main{width:100%; max-width:880px; padding:16px; flex:1;}
+  .card{background:var(--panel); border:1px solid var(--border); border-radius:var(--radius); padding:26px; min-height:340px; display:flex; flex-direction:column; gap:18px;}
+  .qlabel{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:flex; justify-content:space-between;}
+  .qtext{font-size:18px; line-height:1.55; white-space:pre-wrap;}
+  .choices{display:grid; gap:10px;}
+  .choice{text-align:left; background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:13px 16px; font-size:15px; line-height:1.45; cursor:pointer; color:var(--text); transition:border-color .12s, background .12s;}
+  .choice:hover{border-color:var(--accent);}
+  .choice:disabled{cursor:default;}
+  .choice .num{color:var(--muted); margin-right:8px; font-weight:600;}
+  .choice.correct{border-color:var(--green); background:rgba(62,201,126,.12);}
+  .choice.wrong{border-color:var(--red); background:rgba(232,89,106,.12);}
+  .explain{background:var(--panel2); border-left:3px solid var(--accent); border-radius:0 10px 10px 0; padding:14px 16px; font-size:14.5px; line-height:1.55; color:var(--text);}
+  .explain.hidden,.hidden{display:none;}
+  .stimulus{background:#f7f2e2;color:#1d1812;border:1px solid #d9cba4;border-radius:12px;padding:14px 16px;font-family:Georgia,'Times New Roman',serif;max-height:280px;overflow-y:auto;}
+  .stimulus .ptext{font-size:14px;line-height:1.65;white-space:pre-wrap;}
+  .stimulus .psrc{margin-top:10px;font-size:12px;color:#6b5d3f;font-style:italic;text-align:right;}
+  .stim-imgs{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
+  .stim-img{background:#fff;border:1px solid #d9cba4;border-radius:10px;padding:8px;max-width:100%;text-align:center;margin:0;}
+  .stim-img img{max-width:100%;max-height:330px;object-fit:contain;border-radius:4px;}
+  .stim-img figcaption{font-size:11.5px;color:#6b5d3f;margin-top:6px;font-style:italic;max-width:430px;margin-left:auto;margin-right:auto;}
+  .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto;}
+  .selfgrade .btn.got{border-color:var(--green); color:var(--green); font-weight:600;}
+  .selfgrade .btn.missed{border-color:var(--red); color:var(--red); font-weight:600;}
+  .kbd-hint{color:var(--muted); font-size:12px; padding:10px 16px; text-align:center;}
+  kbd{background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:1px 6px; font-size:11px;}
+  /* results */
+  .results{text-align:center; padding:30px 20px;}
+  .score-ring{width:170px; height:170px; margin:10px auto 6px; position:relative;}
+  .score-ring svg{transform:rotate(-90deg);}
+  .score-ring .pct{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .score-ring .pct b{font-size:38px;}
+  .score-ring .pct span{font-size:12px; color:var(--muted);}
+  .gradeline{font-size:20px; font-weight:700; margin:8px 0 2px;}
+  .gradeline.pass{color:var(--green);} .gradeline.fail{color:var(--red);}
+  .sub{color:var(--muted); font-size:14px; margin-bottom:18px;}
+  .missed-list{text-align:left; max-width:760px; margin:18px auto; display:flex; flex-direction:column; gap:10px;}
+  .missed-item{background:var(--panel2); border:1px solid var(--border); border-radius:10px; padding:14px 16px; font-size:14px; line-height:1.5;}
+  .missed-item .mq{color:var(--text); margin-bottom:8px;}
+  .missed-item .ma{color:var(--green);}
+  .flip-hint{color:var(--muted); font-size:13px;}
+  @media (max-width:560px){ .qtext{font-size:16px;} .card{padding:18px;} }
+</style>
+</head>
+<body>
+<header>
+  <h1>Comprehensive Spanish Regents — Jan 2000<span>Flash cards · 44 cards from the exam</span></h1>
+  <div class="chips">
+    <span class="chip">Card <b id="posChip">–</b></span>
+    <span class="chip good">✓ <b id="rightChip">0</b></span>
+    <span class="chip bad">✗ <b id="wrongChip">0</b></span>
+  </div>
+</header>
+
+<div class="controls">
+  <select id="modeSel" title="Mode">
+    <option value="quiz">Quiz mode (graded)</option>
+    <option value="browse">Browse mode (flip cards)</option>
+  </select>
+  <select id="filterSel" title="Card filter">
+    <option value="all">All cards (44)</option>
+    <option value="mc">Multiple choice only (40)</option>
+    <option value="free">Writing tasks only (4)</option>
+  </select>
+  <label style="font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px;">
+    <input type="checkbox" id="shuffleChk" checked> Shuffle
+  </label>
+  <button class="btn" id="restartBtn">Restart round</button>
+</div>
+
+<div class="progressbar"><div class="track"><div class="fill" id="progFill"></div></div></div>
+
+<main id="main"></main>
+<div class="kbd-hint">Keys: <kbd>1</kbd>–<kbd>4</kbd> answer · <kbd>space</kbd> show answer / next · <kbd>G</kbd> got it · <kbd>M</kbd> missed it</div>
+
+<script src="cards.js"></script>
+<script>
+const CARDS = ALL_CARDS;
+
+let deck = [], pos = 0, right = 0, wrong = 0, missed = [];
+let phase = 'question'; // question | revealed | done
+let mode = 'quiz';
+
+const $ = id => document.getElementById(id);
+const main = $('main');
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+
+function buildDeck(){
+  const f = $('filterSel').value;
+  let idx = CARDS.map((c,i)=>i).filter(i => f==='all' || (f==='mc' ? CARDS[i].type==='mc' : CARDS[i].type==='self'));
+  if($('shuffleChk').checked) shuffle(idx);
+  return idx;
+}
+
+function restart(custom){
+  deck = custom && custom.length ? custom.slice() : buildDeck();
+  pos = 0; right = 0; wrong = 0; missed = []; phase='question';
+  mode = $('modeSel').value;
+  render();
+}
+
+function updateChrome(){
+  $('posChip').textContent = phase==='done' ? deck.length+'/'+deck.length : (pos+1)+'/'+deck.length;
+  $('rightChip').textContent = right;
+  $('wrongChip').textContent = wrong;
+  $('progFill').style.width = (phase==='done' ? 100 : (pos/deck.length)*100) + '%';
+}
+
+function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+
+function snapToTop(){ requestAnimationFrame(()=>window.scrollTo({top:0,left:0,behavior:'auto'})); }
+
+function renderStimulus(c){
+  let html = '';
+  if(c.passage) html += '<div class="stimulus"><div class="ptext">'+esc(c.passage)+'</div>'+(c.psource?'<div class="psrc">— '+esc(c.psource)+'</div>':'')+'</div>';
+  if(c.imgs) html += '<div class="stim-imgs">'+c.imgs.map(im=>'<figure class="stim-img"><img src="'+esc(im.src)+'" alt="'+esc(im.alt || im.cap || 'exam document')+'"><figcaption>'+esc(im.cap || '')+'</figcaption></figure>').join('')+'</div>';
+  return html;
+}
+
+function render(){
+  updateChrome();
+  if(phase==='done'){ renderResults(); return; }
+  const c = CARDS[deck[pos]];
+  if(mode==='browse') renderBrowse(c); else renderQuiz(c);
+  snapToTop();
+}
+
+function renderQuiz(c){
+  let html = '<div class="card"><div class="qlabel"><span>'+(c.type==='mc'?'Multiple choice':'Short answer / essay — self-graded')+'</span><span>'+esc(c.label)+'</span></div>';
+  html += renderStimulus(c);
+  html += '<div class="qtext">'+esc(c.type==='mc'?c.stem:c.front)+'</div>';
+  if(c.type==='mc'){
+    html += '<div class="choices">';
+    c.choices.forEach((ch,i)=>{ html += '<button class="choice" data-i="'+i+'"><span class="num">('+(i+1)+')</span>'+esc(ch)+'</button>'; });
+    html += '</div>';
+    html += '<div class="explain hidden" id="explain">'+esc(c.back)+'</div>';
+    html += '<div class="actions"><button class="btn primary hidden" id="nextBtn">Next →</button></div>';
+  } else {
+    html += '<div class="explain hidden" id="explain">'+esc(c.back)+'</div>';
+    html += '<div class="actions" id="selfActions"><button class="btn primary" id="revealBtn">Show answer (space)</button></div>';
+  }
+  html += '</div>';
+  main.innerHTML = html;
+
+  if(c.type==='mc'){
+    main.querySelectorAll('.choice').forEach(b => b.addEventListener('click', ()=>choose(parseInt(b.dataset.i))));
+    $('nextBtn').addEventListener('click', next);
+  } else {
+    $('revealBtn').addEventListener('click', reveal);
+  }
+}
+
+function choose(i){
+  if(phase!=='question') return;
+  const c = CARDS[deck[pos]];
+  phase='revealed';
+  const btns = main.querySelectorAll('.choice');
+  btns.forEach(b=>b.disabled=true);
+  btns[c.answer].classList.add('correct');
+  if(i===c.answer){ right++; } else { wrong++; btns[i].classList.add('wrong'); missed.push(deck[pos]); }
+  $('explain').classList.remove('hidden');
+  $('nextBtn').classList.remove('hidden');
+  $('nextBtn').focus();
+  updateChrome();
+}
+
+function reveal(){
+  if(phase!=='question') return;
+  phase='revealed';
+  $('explain').classList.remove('hidden');
+  $('selfActions').innerHTML = '<div class="selfgrade actions"><button class="btn got" id="gotBtn">✓ I got it (G)</button><button class="btn missed" id="missBtn">✗ I missed it (M)</button></div>';
+  $('gotBtn').addEventListener('click', ()=>selfGrade(true));
+  $('missBtn').addEventListener('click', ()=>selfGrade(false));
+}
+
+function selfGrade(ok){
+  if(phase!=='revealed') return;
+  if(ok) right++; else { wrong++; missed.push(deck[pos]); }
+  next();
+}
+
+function next(){
+  pos++;
+  if(pos>=deck.length){ phase='done'; } else { phase='question'; }
+  render();
+}
+
+function renderResults(){
+  updateChrome();
+  const total = right+wrong;
+  const pct = total? Math.round(right/total*100) : 0;
+  const pass = pct>=65;
+  const letter = pct>=90?'A':pct>=80?'B':pct>=65?'C':pct>=50?'D':'F';
+  const circ = 2*Math.PI*70;
+  let html = '<div class="card results">';
+  html += '<div class="score-ring"><svg width="170" height="170"><circle cx="85" cy="85" r="70" fill="none" stroke="var(--panel2)" stroke-width="14"/><circle cx="85" cy="85" r="70" fill="none" stroke="'+(pass?'var(--green)':'var(--red)')+'" stroke-width="14" stroke-linecap="round" stroke-dasharray="'+circ+'" stroke-dashoffset="'+(circ*(1-pct/100))+'"/></svg><div class="pct"><b>'+pct+'%</b><span>'+right+' / '+total+' correct</span></div></div>';
+  html += '<div class="gradeline '+(pass?'pass':'fail')+'">Grade: '+letter+' — '+(pass?'PASSING (Regents cutoff is 65)':'below the 65 Regents passing cutoff')+'</div>';
+  html += '<div class="sub">'+(pct===100?'Perfect round. Exam-ready.':pass?'Solid — drill the misses below and run it again.':'Keep at it — retry the missed cards below.')+'</div>';
+  html += '<div class="actions" style="justify-content:center;"><button class="btn primary" id="againBtn">New round</button>'+(missed.length?'<button class="btn" id="retryBtn">Retry missed ('+missed.length+')</button>':'')+'</div>';
+  if(missed.length){
+    html += '<div class="missed-list"><div style="font-weight:700;font-size:15px;">Missed cards</div>';
+    missed.forEach(mi=>{ const c=CARDS[mi]; html += '<div class="missed-item"><div class="mq">'+esc(c.type==='mc'?c.stem:c.front)+'</div><div class="ma">'+esc(c.type==='mc' ? '('+(c.answer+1)+') '+c.choices[c.answer] : c.back)+'</div></div>'; });
+    html += '</div>';
+  }
+  html += '</div>';
+  main.innerHTML = html;
+  $('againBtn').addEventListener('click', ()=>restart());
+  const rb = $('retryBtn'); if(rb) rb.addEventListener('click', ()=>restart(shuffle(missed.slice())));
+  snapToTop();
+}
+
+/* browse mode: simple flip */
+let flipped=false;
+function renderBrowse(c){
+  flipped=false;
+  const front = c.type==='mc' ? c.stem+'\n\n'+c.choices.map((ch,i)=>'('+(i+1)+') '+ch).join('\n') : c.front;
+  main.innerHTML = '<div class="card" id="flipCard" style="cursor:pointer;"><div class="qlabel"><span>'+esc(c.label)+'</span><span class="flip-hint">click / space to flip</span></div>'+renderStimulus(c)+'<div class="qtext" id="faceText">'+esc(front)+'</div><div class="actions"><button class="btn" id="prevBtn">← Prev</button><button class="btn primary" id="nxtBtn">Next →</button></div></div>';
+  const face=$('faceText');
+  $('flipCard').addEventListener('click',(e)=>{ if(e.target.tagName==='BUTTON'||e.target.closest('.stim-img'))return; flipped=!flipped; face.textContent = flipped? c.back : front; face.style.color = flipped? 'var(--green)':'var(--text)'; });
+  $('prevBtn').addEventListener('click',()=>{ pos=(pos-1+deck.length)%deck.length; render(); });
+  $('nxtBtn').addEventListener('click',()=>{ pos=(pos+1)%deck.length; render(); });
+}
+
+document.addEventListener('keydown', e=>{
+  if(phase==='done') return;
+  const c = deck.length? CARDS[deck[pos]] : null; if(!c) return;
+  if(mode==='browse'){ if(e.code==='Space'){e.preventDefault(); $('flipCard').click();} if(e.key==='ArrowRight')$('nxtBtn').click(); if(e.key==='ArrowLeft')$('prevBtn').click(); return; }
+  if(c.type==='mc'){
+    if(phase==='question' && ['1','2','3','4'].includes(e.key)) choose(parseInt(e.key)-1);
+    else if(phase==='revealed' && (e.code==='Space'||e.key==='Enter')){ e.preventDefault(); next(); }
+  } else {
+    if(phase==='question' && e.code==='Space'){ e.preventDefault(); reveal(); }
+    else if(phase==='revealed'){ if(e.key.toLowerCase()==='g') selfGrade(true); if(e.key.toLowerCase()==='m') selfGrade(false); }
+  }
+});
+
+$('modeSel').addEventListener('change', ()=>restart());
+$('filterSel').addEventListener('change', ()=>restart());
+$('shuffleChk').addEventListener('change', ()=>restart());
+$('restartBtn').addEventListener('click', ()=>restart());
+
+restart();
+</script>
+</body>
+</html>
